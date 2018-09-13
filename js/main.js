@@ -1,4 +1,4 @@
-var app = angular.module('condo_manager', 
+var app = angular.module('condoManager', 
     ['ngRoute',
      'ngResource',
      'ngMessages',
