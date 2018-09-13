@@ -1,4 +1,4 @@
-angular.module('condo_manager')
+angular.module('condoManager')
 
 .controller('HomeController', function($scope, $http) {
     $scope.nomeApp = 'Condo Manager';
