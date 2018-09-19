@@ -9,11 +9,25 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./css/estilos.css">
     <link rel="stylesheet" ng-href="{{css}}">
+
+    <!-- CSS para o Template -->
+    <link rel="stylesheet" href="./css/font-face.css">
+    <link rel="stylesheet" href="./vendor/smk-accordion/accordion.css">
+    <link rel="stylesheet" href="./vendor/wow/animate.css">
+    <link rel="stylesheet" href="./vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="./vendor/slick/slick.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./node_modules/font-awesome5/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="./node_modules/mdi-font/mdi-font.css">
+    <link rel="stylesheet" href="./node_modules/animsition/dist/css/animsition.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css">
+    <link rel="stylesheet" href="./node_modules/select2/dist/css/select2.min.css">
+    <link rel="stylesheet" href="./node_modules/perfect-scrollbar/css/perfect-scrollbar.css">
+
 </head>
-<body>
+<body class="animsition" style="animation-duration: 500ms; opacity: 1;">
 
     <!-- Menu Temporario -->
     <a href="#!/admin">Admin</a> <br>
@@ -21,7 +35,35 @@
     <a href="#!/cadastro">Cadastro</a> <br>
     <a href="#!/admin/adicionar_morador">Adicionar Morador</a> <br>
 
-    <div ng-view class=""></div>
+    <div class="page-wrapper">
+
+        <!-- HEADER MOBILE -->
+        <header class="header-mobile d-block d-lg-none">
+
+        </header>
+        <!-- END HEADER MOBILE -->
+
+        <!-- MENU SIDEBAR -->
+        <aside class="menu-sidebar d-none d-lg-block">
+
+        </aside>
+        <!-- END MENU SIDEBAR -->
+
+        <!-- PAGE CONTAINER -->
+        <div class="page-container">
+            <!-- HEADER DESKTOP -->
+            <header class="header-desktop">
+
+            </header>
+            <!-- END HEADER DESKTOP -->
+
+            <!-- MAIN CONTENT -->
+            <div ng-view class="main-content"></div>
+            <!-- END MAIN CONTENT -->
+        </div>
+        <!-- END PAGE CONTAINER -->
+
+    </div>
     
     <!---------------------------- Sessão de Scripts ---------------------------->
 
@@ -37,6 +79,22 @@
     <script src="./node_modules/angular-material/angular-material.min.js"></script>
     <script src="./vendor/angular-route-styles/route-styles.js"></script>
     
+    <!-- Dependências do Template -->
+    <script src="./vendor/css-hamburgers/hamburgers.min.css"></script>
+    <script src="./node_modules/popper.js/dist/popper.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./vendor/slick/slick.min.js"></script>
+    <script src="./vendor/wow/wow.min.js"></script>
+    <script src="./node_modules/animsition/dist/js/animsition.min.js"></script>
+    <script src="./node_modules/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="./vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="./vendor/counter-up/jquery.counterup.min.js"></script>
+    <script src="./node_modules/circle-progress/dist/components/circle-progress.js"></script>
+    <script src="./node_modules/perfect-scrollbar/dist/perfect-scrollbar.js"></script>
+    <script src="./vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="./node_modules/select2/dist/js/select2.min.js"></script>
+    <script src="./vendor/util.js"></script>
+
     <!-- Módulo Principal -->
     <script src="./app/app.js"></script>
 
