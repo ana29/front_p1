@@ -1,6 +1,6 @@
 angular.module('condoManager')
 
-.controller('HomeController', function($scope, $http) {
+.controller('HomeAdminController', function($scope, $http) {
     $scope.nomeApp = 'Condo Manager';
 
     /*$http.get('https://projetop1.herokuapp.com')

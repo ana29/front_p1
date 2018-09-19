@@ -11,8 +11,15 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="./css/estilos.css">
+    <link rel="stylesheet" ng-href="{{css}}">
 </head>
-<body ng-controller="HomeController">
+<body>
+
+    <!-- Menu Temporario -->
+    <a href="#!/admin">Admin</a> <br>
+    <a href="#!/login">Login</a> <br>
+    <a href="#!/cadastro">Cadastro</a> <br>
+    <a href="#!/admin/adicionar_morador">Adicionar Morador</a> <br>
 
     <div ng-view class=""></div>
     
@@ -28,13 +35,23 @@
     <script src="./node_modules/angular-aria/angular-aria.min.js"></script>
     <script src="./node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="./node_modules/angular-material/angular-material.min.js"></script>
+    <script src="./vendor/angular-route-styles/route-styles.js"></script>
     
     <!-- Módulo Principal -->
-    <script src="./js/main.js"></script>
+    <script src="./app/app.js"></script>
 
     <!-- Services -->
+    <script src="./app/components/TelaLogin/LoginService.js"></script>
+    <script src="./app/components/TelaCadastro/CadastroService.js"></script>
+    <script src="./app/components/Admin/TelaHome/HomeAdminService.js"></script>
+    <script src="./app/components/Admin/TelaAddMorador/AddMoradorService.js"></script>
+    <script src="./app/components/Morador/TelaHome/HomeUserService.js"></script>
 
     <!-- Controllers -->
-    <script src="./js/controllers/HomeController.js"></script>
+    <script src="./app/components/TelaLogin/LoginController.js"></script>
+    <script src="./app/components/TelaCadastro/CadastroController.js"></script>
+    <script src="./app/components/Admin/TelaHome/HomeAdminController.js"></script>
+    <script src="./app/components/Admin/TelaAddMorador/AddMoradorController.js"></script>
+    <script src="./app/components/Morador/TelaHome/HomeUserController.js"></script>
 </body>
 </html>
