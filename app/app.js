@@ -3,7 +3,6 @@ var app = angular.module('condoManager',
      'ngResource',
      'ngMessages',
      'ngStorage',
-     'ngMaterial',
      'routeStyles']);
 
 app.config(($routeProvider) => {
@@ -22,14 +21,14 @@ app.config(($routeProvider) => {
         ],
         controller: 'CadastroController'
     })
-    .when('/admin', {
+    .when('/home_adm', {
         templateUrl: 'app/components/Admin/TelaHome/HomeAdmin.html',
         css: [
             'app/components/Admin/TelaHome/HomeAdmin.css'
         ],
         controller: 'HomeAdminController'
     })
-    .when('/admin/adicionar_morador', {
+    .when('/home_adm/adicionar_morador', {
         templateUrl: 'app/components/Admin/TelaAddMorador/AddMorador.html',
         css: [
             'app/components/Admin/TelaAddMorador/AddMorador.css'
