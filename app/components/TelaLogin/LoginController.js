@@ -1,4 +1,4 @@
-var condomanager = angular.module('condomanager');
+var condomanager = angular.module('condoManager');
 
 condomanager.controller('LoginController', ['$scope', '$location', '$timeout', '$routeParams', 'LoginService', function($scope, $location, $timeout, $routeParams, LoginService) {
 
