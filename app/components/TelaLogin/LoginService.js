@@ -1,4 +1,4 @@
-var condomanager = angular.module('condomanager');
+var condomanager = angular.module('condoManager');
 
 condomanager.service('LoginService', ['$q', '$http', function ($q, $http) {
 
