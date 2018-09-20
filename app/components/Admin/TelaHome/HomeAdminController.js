@@ -1,0 +1,14 @@
+angular.module('condoManager')
+
+.controller('HomeAdminController', function($scope, $http) {
+    $scope.nomeApp = 'Condo Manager';
+
+    /*$http.get('https://projetop1.herokuapp.com')
+        .then(function (data) {
+            this.teste = data.body.teste;
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+        */
+});
