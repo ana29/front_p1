@@ -1,8 +1,10 @@
 angular.module('condoManager')
 
-.controller('AddMoradorController', function($scope, AddMoradorService, $location) {
+.controller('AddMoradorController', function($scope, AddMoradorService, $location, $localStorage) {
 
     $scope.resident = new AddMoradorService();
+
+    $scope.resident.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
 
     $scope.cadastrar = () => {
         
@@ -12,7 +14,6 @@ angular.module('condoManager')
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 alert("Salvo com sucesso!");
-                $location.path("/login");
             }
         })
 

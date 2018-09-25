@@ -55,7 +55,7 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -127,7 +127,7 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
+                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -322,7 +322,7 @@
                                             <i class="zmdi zmdi-notifications"></i>
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">usuário</a>
+                                            <a class="js-acc-btn" href="#">{{$root.usuarioLogado.name_admin}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -333,9 +333,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">usuário</a>
+                                                        <a href="#">{{$root.usuarioLogado.name}}</a>
                                                     </h5>
-                                                    <span class="email">usuario@example.com</span>
+                                                    <span class="email">{{$root.usuarioLogado.email_admin}}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -349,7 +349,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="#" ng-click="$root.logout()">
                                                     <i class="zmdi zmdi-power"></i>Sair</a>
                                             </div>
                                         </div>

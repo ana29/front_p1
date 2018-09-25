@@ -1,4 +1,12 @@
-var condomanager = angular.module('condoManager');
+angular.module('condoManager')
+
+.factory('LoginService', function($resource, env, $rootScope, $localStorage) {
+
+    return LoginResource = $resource(env.BASE_API_REMOTE+'/condominiums/login');
+
+});
+
+/*var condomanager = angular.module('condoManager');
 
 condomanager.service('LoginService', ['$q', '$http', function ($q, $http) {
 
@@ -27,4 +35,4 @@ condomanager.service('LoginService', ['$q', '$http', function ($q, $http) {
 
         return deferred.promise;
     }
-}]);
+}]);*/
