@@ -18,7 +18,7 @@ angular.module('condoManager')
 
         .catch((erro) => {
             alert("Não foi possível salvar");
-            $scpoe.mensagem = { texto: "Não foi possível salvar!" };
+            $scope.mensagem = { texto: "Não foi possível salvar!" };
             console.log(erro);
         });
     }

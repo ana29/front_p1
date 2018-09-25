@@ -4,53 +4,62 @@
             <div class="card-header text-center title-2">Adicionar novo morador</div>
             <div class="card-body">
 
-                <form action="" method="post" novalidate="novalidate">
+                <form ng-submit="cadastrar()" novalidate name="frm">
                     <div class="row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-12">
                             <label for="cc-name" class="control-label mb-1">Nome</label>
                             <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
                                 data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true"
-                                aria-invalid="false" aria-describedby="cc-name-error">
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                data-valmsg-replace="true"></span>
-                        </div>
-
-                        <div class="form-group col-md-7">
-                            <label for="cc-name" class="control-label mb-1">Sobrenome</label>
-                            <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true"
-                                aria-invalid="false" aria-describedby="cc-name-error">
+                                aria-invalid="false" aria-describedby="cc-name-error" ng-model="resident.name">
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
                     <div class="form-group has-success">
-                        <label for="cc-endereco" class="control-label mb-1">Endereço</label>
+                        <label for="cc-endereco" class="control-label mb-1">Casa</label>
                         <input id="cc-endereco" name="cc-endereco" type="text" class="form-control cc-name valid"
                             data-val="true" data-val-required="Por favor, insira o endereço" autocomplete="cc-name"
-                            aria-required="true" aria-invalid="false" aria-describedby="cc-name-error">
+                            aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" ng-model="resident.house">
                         <span class="help-block field-validation-valid" data-valmsg-for="cc-endereco"
                             data-valmsg-replace="true"></span>
                     </div>
                     <div class="form-group">
                         <label for="cc-number" class="control-label mb-1">CPF</label>
-                        <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number"
-                            value="" data-val="true" data-val-required="Please enter the card number" placeholder="XXX.XXX.XXX-XX"
-                            data-val-cc-number="Por favor, insira um CPF válido" autocomplete="cc-number">
+                        <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number" value=""
+                            data-val="true" data-val-required="Please enter the card number" placeholder="XXX.XXX.XXX-XX"
+                            data-val-cc-number="Por favor, insira um CPF válido" autocomplete="cc-number" ng-model="resident.cpf">
                         <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                     </div>
 
                     <div class="form-group">
                         <label for="email-input" class=" form-control-label">Email</label>
-                        <input type="email" id="email-input" name="email-input" placeholder="email@mail.com" class="form-control">
+                        <input type="email" id="email-input" name="email-input" placeholder="email@mail.com" class="form-control"
+                            ng-model="resident.email">
                     </div>
 
                     <div class="form-group">
                         <label for="cc-number" class="control-label mb-1">Telefone</label>
                         <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa"
                             value="" data-val="true" data-val-required="Digite o telefone do morador"
-                            data-val-cc-number="Por favor, insira um telefone válido" autocomplete="cc-number" placeholder="(XX) X XXXX-XXXX">
+                            data-val-cc-number="Por favor, insira um telefone válido" autocomplete="cc-number"
+                            placeholder="(XX) X XXXX-XXXX" ng-model="resident.phone">
+                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc-number" class="control-label mb-1">Senha</label>
+                        <input id="cc-number" name="cc-number" type="password" class="form-control cc-number identified visa"
+                            value="" data-val="true" data-val-required="Digite a senha do morador" data-val-cc-number="Por favor, insira um telefone válido"
+                            autocomplete="cc-number" placeholder="(XX) X XXXX-XXXX" ng-model="resident.password">
+                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc-number" class="control-label mb-1">CNPJ do Condomínio</label>
+                        <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number" value=""
+                            data-val="true" data-val-required="Please enter the card number" placeholder="XXX.XXX.XXX-XX"
+                            data-val-cc-number="Por favor, insira um CNPJ válido" autocomplete="cc-number" ng-model="resident.condominium_cnpj">
                         <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
                     </div>
 

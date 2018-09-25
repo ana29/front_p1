@@ -1,0 +1,15 @@
+<input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+<div class="table-responsive">
+    <table class="table table-hover">
+        <tr>
+            <th>NOME</th>
+            <th>CNPJ</th>
+        </tr>
+
+        <tr ng-repeat="condo in condominios | filter:filtro">
+            <td><a ng-href="#!/condominios/{{condo.id}}">{{condo.name}}</a></td>
+            <td>{{ condo.cnpj }}</td>
+        </tr>
+    </table>
+</div>
