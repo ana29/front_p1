@@ -2,13 +2,13 @@ angular.module('condoManager')
 
 .controller('AddFuncionarioController', function($scope, AddFucionarioService, $location, $localStorage) {
 
-    $scope.resident = new AddFuncionarioService();
+    $scope.funcionario = new AddFuncionarioService();
 
-    $scope.resident.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
+    $scope.funcionario.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
 
     $scope.cadastrar = () => {
         
-        $scope.resident.$save()
+        $scope.funcionario.$save()
 
         .then(() => {
             if ($scope.frm.$valid) {
