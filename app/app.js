@@ -60,6 +60,14 @@ app.config(($routeProvider) => {
         controller: 'ListarMoradoresController',
         title: 'Condo Manager - Moradores'
     })
+    .when('/home_morador', {
+        templateUrl: 'app/components/Morador/HomeMorador.html',
+        css: [
+            'app/components/Admin/Morador/HomeMorador.css'
+        ],
+        controller: 'HomeMoradorController',
+        title: 'Condo Manager - Home'
+    })
     .otherwise({
         redirectTo: '/login'
     });
