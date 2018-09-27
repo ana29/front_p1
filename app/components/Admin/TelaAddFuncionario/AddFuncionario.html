@@ -1,0 +1,54 @@
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Adicionar novo Funcionário</div>
+            <div class="card-body">
+
+                <form ng-submit="cadastrar()" name="frm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Nome</label>
+                            <input name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="resident.name">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc-number" class="control-label mb-1">CPF</label>
+                        <input name="cc-number" type="tel" class="form-control cc-number" value="" data-val="true"
+                            placeholder="XXX.XXX.XXX-XX" ng-model="resident.cpf">
+                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email-input" class=" form-control-label">Email</label>
+                        <input type="email" id="email-input" name="email-input" placeholder="email@mail.com" class="form-control"
+                            ng-model="resident.email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc-number" class="control-label mb-1">Telefone</label>
+                        <input name="cc-number" type="tel" class="form-control cc-number identified visa" value=""
+                            data-val="true" placeholder="(XX) X XXXX-XXXX" ng-model="resident.phone">
+                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cc-number" class="control-label mb-1">Senha</label>
+                        <input name="cc-number" type="password" class="form-control cc-number identified visa" value=""
+                            ng-model="resident.password">
+                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>

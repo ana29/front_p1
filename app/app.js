@@ -44,6 +44,14 @@ app.config(($routeProvider) => {
         controller: 'AddMoradorController',
         title: 'Condo Manager - Administração'
     })
+    .when('/home_adm/adicionar_funcionario', {
+        templateUrl: 'app/components/Admin/TelaAddFuncionario/AddFuncionario.html',
+        css: [
+            'app/components/Admin/TelaAddFuncionario/AddFuncionario.css'
+        ],
+        controller: 'AddFuncionarioController',
+        title: 'Condo Manager - Administração'
+    })
     .when('/home_adm/condominios', {
         templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
         css: [
