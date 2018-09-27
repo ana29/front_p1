@@ -5,6 +5,11 @@ var app = angular.module('condoManager',
      'ngStorage',
      'routeStyles']);
 
+app.constant('env', {
+    BASE_API_LOCAL: 'http://localhost:3000',
+    BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
+})
+
 app.config(($routeProvider) => {
     $routeProvider
     .when('/login', {
@@ -38,6 +43,22 @@ app.config(($routeProvider) => {
         ],
         controller: 'AddMoradorController',
         title: 'Condo Manager - Administração'
+    })
+    .when('/home_adm/condominios', {
+        templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
+        css: [
+            'app/components/Admin/TelaListarCondominios/ListarCondominios.css'
+        ],
+        controller: 'ListarCondominiosController',
+        title: 'Condo Manager - Condomínios'
+    })
+    .when('/home_adm/moradores', {
+        templateUrl: 'app/components/Admin/TelaListarMoradores/ListarMoradores.html',
+        css: [
+            'app/components/Admin/TelaListarMoradores/ListarMoradores.css'
+        ],
+        controller: 'ListarMoradoresController',
+        title: 'Condo Manager - Moradores'
     })
     .otherwise({
         redirectTo: '/login'

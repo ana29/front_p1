@@ -1,0 +1,24 @@
+<div class="container">
+
+
+    <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>NOME</th>
+                <th>CPF</th>
+                <th>EMAIL</th>
+                <th>CNPJ CONDOMÍNIO</th>
+            </tr>
+
+            <tr ng-repeat="morador in moradores | filter:filtro">
+                <td><a ng-href="#!/home_admin/morador/{{morador.id}}">{{morador.name}}</a></td>
+                <td>{{ morador.cpf }}</td>
+                <td>{{ morador.email }}</td>
+                <td>{{ morador.condominium_cnpj }}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

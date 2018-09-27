@@ -55,10 +55,13 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
+                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="#!/home_adm/moradores">Listar Moradores</a>
+                                </li>
                                 <li>
                                     <a href="#!/home_adm/adicionar_morador">Adicionar Morador</a>
                                 </li>
@@ -93,6 +96,9 @@
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="#!/home_adm">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#!/home_adm/condominios">Listar Moradores</a>
                                 </li>
                                 <li>
                                     <a href="#!/cadastro">Cadastro</a>
@@ -121,10 +127,14 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub">
+                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                                <li>
+                                    <a href="#!/home_adm/moradores">Listar Moradores</a>
+                                </li>
                                 <li>
                                     <a href="#!/home_adm/adicionar_morador">Adicionar Morador</a>
                                 </li>
@@ -159,6 +169,9 @@
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
                                     <a href="#!/home_adm">Home</a>
+                                </li>
+                                <li>
+                                    <a href="#!/home_adm/condominios">Listar Condomínios</a>
                                 </li>
                                 <li>
                                     <a href="#!/cadastro">Cadastro</a>
@@ -188,7 +201,7 @@
                                 </button>-->
                             </form>
                             <div class="header-button">
-                                
+
                                 <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-comment-more"></i>
@@ -301,7 +314,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
@@ -309,7 +322,7 @@
                                             <i class="zmdi zmdi-notifications"></i>
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">usuário</a>
+                                            <a class="js-acc-btn" href="#">{{$root.usuarioLogado.name_admin}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -320,9 +333,9 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">usuário</a>
+                                                        <a href="#">{{$root.usuarioLogado.name}}</a>
                                                     </h5>
-                                                    <span class="email">usuario@example.com</span>
+                                                    <span class="email">{{$root.usuarioLogado.email_admin}}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -336,7 +349,7 @@
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer">
-                                                <a href="#">
+                                                <a href="#" ng-click="$root.logout()">
                                                     <i class="zmdi zmdi-power"></i>Sair</a>
                                             </div>
                                         </div>
@@ -397,6 +410,8 @@
     <script src="./app/components/Admin/TelaHome/HomeAdminService.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorService.js"></script>
     <script src="./app/components/Morador/TelaHome/HomeUserService.js"></script>
+    <script src="./app/components/Admin/TelaListarCondominios/ListarCondominiosService.js"></script>
+    <script src="./app/components/Admin/TelaListarMoradores/ListarMoradoresService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/LoginController.js"></script>
@@ -404,6 +419,9 @@
     <script src="./app/components/Admin/TelaHome/HomeAdminController.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorController.js"></script>
     <script src="./app/components/Morador/TelaHome/HomeUserController.js"></script>
+    <script src="./app/components/Admin/TelaListarCondominios/ListarCondominiosController.js"></script>
+    <script src="./app/components/Admin/TelaListarMoradores/ListarMoradoresController.js"></script>
+
 </body>
 
 </html>

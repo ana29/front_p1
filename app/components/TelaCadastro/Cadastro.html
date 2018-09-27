@@ -9,46 +9,46 @@
             </div>
 
             <div class="login-form">
-                <form action="" method="post">
+                <form ng-submit="cadastrar()" name="frm">
 
                     <div class="form-group">
                         <label>Nome do Condomínio</label>
-                        <input class="au-input au-input--full" type="nome" name="nome" placeholder="">
+                        <input class="au-input au-input--full" type="nome" name="nome" ng-model="condominio.name">
                     </div>
 
                     <div class="form-group">
                         <label>CNPJ</label>
-                        <input class="au-input au-input--full" type="cnpj" placeholder="">
+                        <input class="au-input au-input--full" type="number" placeholder="" ng-model="condominio.cnpj">
                     </div>
                     <div class="form-group">
                         <label>Endereço</label>
-                        <input class="au-input au-input--full" type="Rua" placeholder="">
+                        <input class="au-input au-input--full" type="Rua" ng-model="condominio.address">
                     </div>
 
                     <div class="form-group">
                         <label>Telefone</label>
-                        <input class="au-input au-input--full" type="" placeholder="(XX) XXXX-XXXX">
+                        <input class="au-input au-input--full" type="" placeholder="(XX) XXXX-XXXX" ng-model="condominio.phone">
                     </div>
 
                     <div class="form-group">
                         <label>Nome do administrador</label>
-                        <input class="au-input au-input--full" type="nome" placeholder="">
+                        <input class="au-input au-input--full" type="nome" placeholder="" ng-model="condominio.name_admin">
                     </div>
 
                     <div class="form-group">
                         <label>CPF</label>
-                        <input class="au-input au-input--full" type="nome" placeholder="XXX.XXX.XXX-XX">
+                        <input class="au-input au-input--full" type="nome" placeholder="XXX.XXX.XXX-XX" ng-model="condominio.cpf_admin">
                     </div>
 
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input class="au-input au-input--full" type="email" name="email" placeholder="nome@email.com">
+                        <input class="au-input au-input--full" type="email" name="email" placeholder="nome@email.com" ng-model="condominio.email_admin">
                     </div>
 
                     <div class="form-group">
                         <label>Senha</label>
-                        <input class="au-input au-input--full" type="password" name="password" placeholder="">
+                        <input class="au-input au-input--full" type="password" name="password" ng-model="condominio.password">
                     </div>
 
                     <div class="form-group">
