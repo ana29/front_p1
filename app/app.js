@@ -61,11 +61,19 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Moradores'
     })
     .when('/home_morador', {
-        templateUrl: 'app/components/Morador/HomeMorador.html',
+        templateUrl: 'app/components/Morador/TelaHome/HomeMorador.html',
         css: [
-            'app/components/Admin/Morador/HomeMorador.css'
+            'app/components/Admin/Morador/TelaHome/HomeMorador.css'
         ],
         controller: 'HomeMoradorController',
+        title: 'Condo Manager - Home'
+    })
+    .when('/home_morador/adicionar_visitante', {
+        templateUrl: 'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.html',
+        css: [
+            'app/components/Admin/Morador/TelaHome/TelaAddVisitante/AddVisitante.css'
+        ],
+        controller: 'AddVisitanteController',
         title: 'Condo Manager - Home'
     })
     .otherwise({
