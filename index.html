@@ -59,7 +59,7 @@
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
+                                <li ng-if="false">
                                     <a href="#!/home_adm/moradores">Listar Moradores</a>
                                 </li>
                                 <li>
@@ -98,13 +98,10 @@
                                 <li>
                                     <a href="#!/home_adm">Home</a>
                                 </li>
-                                <li>
-                                    <a href="#!/home_adm/condominios">Listar Moradores</a>
-                                </li>
-                                <li>
+                                <li ng-if="!$root.usuarioLogado">
                                     <a href="#!/cadastro">Cadastro</a>
                                 </li>
-                                <li>
+                                <li ng-if="!$root.usuarioLogado">
                                     <a href="#!/login">Login</a>
                                 </li>
                             </ul>
@@ -133,7 +130,7 @@
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
 
-                                <li>
+                                <li ng-if="false">
                                     <a href="#!/home_adm/moradores">Listar Moradores</a>
                                 </li>
                                 <li>
@@ -171,13 +168,13 @@
                                 <li>
                                     <a href="#!/home_adm">Home</a>
                                 </li>
-                                <li>
+                                <li ng-if="false">
                                     <a href="#!/home_adm/condominios">Listar Condomínios</a>
                                 </li>
-                                <li>
+                                <li ng-if="!$root.usuarioLogado">
                                     <a href="#!/cadastro">Cadastro</a>
                                 </li>
-                                <li>
+                                <li ng-if="!$root.usuarioLogado">
                                     <a href="#!/login">Login</a>
                                 </li>
                             </ul>
