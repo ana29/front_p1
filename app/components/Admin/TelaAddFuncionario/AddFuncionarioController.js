@@ -1,10 +1,11 @@
 angular.module('condoManager')
 
-.controller('AddFuncionarioController', function($scope, AddFucionarioService, $location, $localStorage) {
+.controller('AddFuncionarioController', function($scope, AddFuncionarioService, $location, $localStorage) {
 
     $scope.funcionario = new AddFuncionarioService();
 
     $scope.funcionario.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
+    $scope.funcionario.permission = 5;
 
     $scope.cadastrar = () => {
         
