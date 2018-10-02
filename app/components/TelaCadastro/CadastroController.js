@@ -3,6 +3,7 @@ angular.module('condoManager')
 .controller('CadastroController', function($scope, CadastroService, $location) {
 
     $scope.condominio = new CadastroService();
+    $scope.condominio.permission = 0;
 
     $scope.cadastrar = () => {
         

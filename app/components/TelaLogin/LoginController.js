@@ -14,6 +14,8 @@ angular.module('condoManager')
                 alert("Logado com sucesso!");
                 $location.path("/home_adm");
                 console.log(res);
+                console.log(res.headers);
+                console.log(res.data);
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
             }
@@ -27,8 +29,8 @@ angular.module('condoManager')
     }
 
     $rootScope.logout = () => {
-        delete $localStorage.usuarioLogado;
         delete $rootScope.usuarioLogado;
+        delete $localStorage.usuarioLogado;
     }
 
     $scope.login = () => {

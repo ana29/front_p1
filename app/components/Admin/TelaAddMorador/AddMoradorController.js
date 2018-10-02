@@ -5,6 +5,7 @@ angular.module('condoManager')
     $scope.resident = new AddMoradorService();
 
     $scope.resident.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
+    $scope.resident.permission = 10;
 
     $scope.cadastrar = () => {
         
