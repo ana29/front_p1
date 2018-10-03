@@ -1,12 +1,14 @@
 angular.module('condoManager')
 
-.controller('LoginController', function($scope, $rootScope, LoginService, $localStorage, $location) {
+.controller('LoginController', function($scope, $rootScope, LoginAdminService, LoginResidentService, LoginStaffService, $localStorage, $location) {
 
-    $scope.userLogin = new LoginService();
+    $scope.loginAdmin = new LoginAdminService();
+    $scope.loginResident = new LoginResidentService();
+    $scope.loginStaff = new LoginStaffService();
 
-    $scope.logar = () => {
+    $scope.logar_admin = () => {
         
-        $scope.userLogin.$save()
+        $scope.loginAdmin.$save()
 
         .then((res) => {
             if ($scope.frm.$valid) {
@@ -14,8 +16,50 @@ angular.module('condoManager')
                 alert("Logado com sucesso!");
                 $location.path("/home_adm");
                 console.log(res);
-                console.log(res.headers);
-                console.log(res.data);
+                $localStorage.usuarioLogado = res;
+                $rootScope.usuarioLogado = res;
+            }
+        })
+
+        .catch((erro) => {
+            alert("Não foi possível fazer login");
+            $scope.mensagem = { texto: "Não foi possível fazer login!" };
+            console.log(erro);
+        });
+    }
+
+    $scope.logar_resident = () => {
+        
+        $scope.loginResident.$save()
+
+        .then((res) => {
+            if ($scope.frm.$valid) {
+                $scope.mensagem = { texto: "Logado com sucesso" };
+                alert("Logado com sucesso!");
+                $location.path("/home_morador");
+                console.log(res);
+                $localStorage.usuarioLogado = res;
+                $rootScope.usuarioLogado = res;
+            }
+        })
+
+        .catch((erro) => {
+            alert("Não foi possível fazer login");
+            $scope.mensagem = { texto: "Não foi possível fazer login!" };
+            console.log(erro);
+        });
+    }
+
+    $scope.logar_staff = () => {
+        
+        $scope.loginStaff.$save()
+
+        .then((res) => {
+            if ($scope.frm.$valid) {
+                $scope.mensagem = { texto: "Logado com sucesso" };
+                alert("Logado com sucesso!");
+                $location.path("/home_funcionario");
+                console.log(res);
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
             }
@@ -33,52 +77,4 @@ angular.module('condoManager')
         delete $localStorage.usuarioLogado;
     }
 
-    $scope.login = () => {
-        if ($scope.cnpj != null && $scope.password != null) {
-            LoginService.loginUser($scope.cnpj, $scope.password).then(
-                (res) => {
-                    $localStorage.token = res.token;
-                    $rootScope.token = res.token;
-                    //$location.path('/');
-                    console.log(res);
-                },
-
-                (err) => {
-                    alert("CNPJ ou senha incorreto(s)");
-                    console.log(err);
-                }
-            )
-        } else {
-            alert("Erro!");
-        }
-    };
-
-    $rootScope.token = $localStorage.token;
-})
-/*var condomanager = angular.module('condoManager');
-
-condomanager.controller('LoginController', ['$scope', '$location', '$timeout', '$routeParams', 'LoginService', function($scope, $location, $timeout, $routeParams, LoginService) {
-
-    $scope.submitForm = function() {
-        var user = {
-            cnpj: $scope.cnpj,
-            password: $scope.input
-        };
-
-        if ($scope.userForm.$valid) {
-            LoginService.login(user)
-                // handle success
-                .then(function () {
-                    
-                    $timeout(function() {
-                        $location.path('/home');
-                        }, 1500);
-                })
-                // handle error
-                .catch(function (error) {
-                    var dangerMessage = error.err;
-
-                });
-        };
-    };
-}]);*/
+});

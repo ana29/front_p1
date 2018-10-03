@@ -1,35 +1,56 @@
+
+<h4 class="text-center">Escolha seu perfil</h4>
+
 <br>
-<div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <span style="font-variant: small-caps; font-size:35px; color:black;">
-                                    <b>Condo</b> Manager
-                                </span>
-                            </a>
-                        </div>
-                        <div class="login-form"  novalidate>
-                            <form ng-submit="logar()" name="frm">
-                                <div class="form-group">
-                                    <label>E-mail</label>
-                                    <input class="au-input au-input--full" id="inputEmail" type="text" name="email" placeholder="Email do administrador" ng-model="userLogin.email">
-                                </div>
-                                <div class="form-group">
-                                    <label>Senha</label>
-                                    <input class="au-input au-input--full" id="inputSenha" type="password" name="password" placeholder="Senha" ng-model="userLogin.password">
-                                </div>
-                                    <div class="login-checkbox">
-                                </div>
+
+<ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-admin-tab" target="_self" data-toggle="pill" href="#pills-admin" role="tab"
+            aria-controls="pills-admin" aria-selected="true">Administrador</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-morador-tab" target="_self" data-toggle="pill" href="#pills-morador" role="tab"
+            aria-controls="pills-morador" aria-selected="false">Morador</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="pills-funcionario-tab" target="_self" data-toggle="pill" href="#pills-funcionario" role="tab"
+            aria-controls="pills-funcionario" aria-selected="false">Funcionário</a>
+    </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-pane fade show active" id="pills-admin" role="tabpanel" aria-labelledby="pills-admin-tab">
+        <div class="page-wrapper">
+            <div class="page-content--bge5">
+                <div class="container">
+                    <div class="login-wrap">
+                        <div class="login-content">
+                            <div class="login-logo">
+                                <a href="#">
+                                    <span style="font-variant: small-caps; font-size:35px; color:black;">
+                                        <b>Condo</b> Manager
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="login-form" novalidate>
+                                <form ng-submit="logar_admin()" name="frm">
+                                    <div class="form-group">
+                                        <label>E-mail</label>
+                                        <input class="au-input au-input--full" id="inputEmail" type="text" name="email"
+                                            placeholder="Email do Administrador" ng-model="loginAdmin.email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Senha</label>
+                                        <input class="au-input au-input--full" id="inputSenha" type="password" name="password"
+                                            placeholder="Senha" ng-model="loginAdmin.password">
+                                    </div>
                                     <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">LOGIN</button>
-                                </div>
+                            </div>
                             </form>
                             <div class="register-link">
                                 <p>
                                     Não possui cadastro?
-                                    <a href="#!/cadastro">Se cadastre aqui</a>
+                                    <a href="#!/cadastro">Cadastre-se aqui</a>
                                 </p>
                             </div>
                         </div>
@@ -37,4 +58,119 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="tab-pane fade" id="pills-morador" role="tabpanel" aria-labelledby="pills-morador-tab">
+        <div class="page-wrapper">
+            <div class="page-content--bge5">
+                <div class="container">
+                    <div class="login-wrap">
+                        <div class="login-content">
+                            <div class="login-logo">
+                                <a href="#">
+                                    <span style="font-variant: small-caps; font-size:35px; color:black;">
+                                        <b>Condo</b> Manager
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="login-form" novalidate>
+                                <form ng-submit="logar_resident()" name="frm">
+                                    <div class="form-group">
+                                        <label>E-mail</label>
+                                        <input class="au-input au-input--full" id="inputEmail" type="text" name="email"
+                                            placeholder="Email do Usuário" ng-model="loginResident.email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Senha</label>
+                                        <input class="au-input au-input--full" id="inputSenha" type="password" name="password"
+                                            placeholder="Senha" ng-model="loginResident.password">
+                                    </div>
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">LOGIN</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="pills-funcionario" role="tabpanel" aria-labelledby="pills-funcionario-tab">
+        <div class="page-wrapper">
+            <div class="page-content--bge5">
+                <div class="container">
+                    <div class="login-wrap">
+                        <div class="login-content">
+                            <div class="login-logo">
+                                <a href="#">
+                                    <span style="font-variant: small-caps; font-size:35px; color:black;">
+                                        <b>Condo</b> Manager
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="login-form" novalidate>
+                                <form ng-submit="logar_staff()" name="frm">
+                                    <div class="form-group">
+                                        <label>E-mail</label>
+                                        <input class="au-input au-input--full" id="inputEmail" type="text" name="email"
+                                            placeholder="Email do Funcionário" ng-model="loginStaff.email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Senha</label>
+                                        <input class="au-input au-input--full" id="inputSenha" type="password" name="password"
+                                            placeholder="Senha" ng-model="loginStaff.password">
+                                    </div>
+                                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">LOGIN</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<br>
+<!--
+<div class="page-wrapper">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="#">
+                            <span style="font-variant: small-caps; font-size:35px; color:black;">
+                                <b>Condo</b> Manager
+                            </span>
+                        </a>
+                    </div>
+                    <div class="login-form" novalidate>
+                        <form ng-submit="logar()" name="frm">
+                            <div class="form-group">
+                                <label>E-mail</label>
+                                <input class="au-input au-input--full" id="inputEmail" type="text" name="email"
+                                    placeholder="Email do administrador" ng-model="userLogin.email">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input class="au-input au-input--full" id="inputSenha" type="password" name="password"
+                                    placeholder="Senha" ng-model="userLogin.password">
+                            </div>
+                            <div class="login-checkbox">
+                            </div>
+                            <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">LOGIN</button>
+                    </div>
+                    </form>
+                    <div class="register-link">
+                        <p>
+                            Não possui cadastro?
+                            <a href="#!/cadastro">Se cadastre aqui</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+-->

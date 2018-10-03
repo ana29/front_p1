@@ -12,6 +12,7 @@ app.constant('env', {
 
 app.config(($routeProvider) => {
     $routeProvider
+    
     .when('/login', {
         templateUrl: 'app/components/TelaLogin/Login.html',
         css: [
@@ -20,6 +21,7 @@ app.config(($routeProvider) => {
         controller: 'LoginController',
         title: 'Condo Manager - Login'
     })
+    
     .when('/cadastro', {
         templateUrl: 'app/components/TelaCadastro/Cadastro.html',
         css: [
@@ -28,6 +30,7 @@ app.config(($routeProvider) => {
         controller: 'CadastroController',
         title: 'Condo Manager - Cadastro'
     })
+    
     .when('/home_adm', {
         templateUrl: 'app/components/Admin/TelaHome/HomeAdmin.html',
         css: [
@@ -36,6 +39,7 @@ app.config(($routeProvider) => {
         controller: 'HomeAdminController',
         title: 'Condo Manager - Home'
     })
+    
     .when('/home_adm/adicionar_morador', {
         templateUrl: 'app/components/Admin/TelaAddMorador/AddMorador.html',
         css: [
@@ -44,6 +48,7 @@ app.config(($routeProvider) => {
         controller: 'AddMoradorController',
         title: 'Condo Manager - Administração'
     })
+    
     .when('/home_adm/adicionar_funcionario', {
         templateUrl: 'app/components/Admin/TelaAddFuncionario/AddFuncionario.html',
         css: [
@@ -52,6 +57,7 @@ app.config(($routeProvider) => {
         controller: 'AddFuncionarioController',
         title: 'Condo Manager - Administração'
     })
+    
     .when('/home_adm/condominios', {
         templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
         css: [
@@ -60,6 +66,7 @@ app.config(($routeProvider) => {
         controller: 'ListarCondominiosController',
         title: 'Condo Manager - Condomínios'
     })
+    
     .when('/home_adm/moradores', {
         templateUrl: 'app/components/Admin/TelaListarMoradores/ListarMoradores.html',
         css: [
@@ -68,22 +75,34 @@ app.config(($routeProvider) => {
         controller: 'ListarMoradoresController',
         title: 'Condo Manager - Moradores'
     })
+    
     .when('/home_morador', {
         templateUrl: 'app/components/Morador/TelaHome/HomeMorador.html',
         css: [
-            'app/components/Admin/Morador/TelaHome/HomeMorador.css'
+            'app/components/Morador/TelaHome/HomeMorador.css'
         ],
         controller: 'HomeMoradorController',
         title: 'Condo Manager - Home'
     })
+    
     .when('/home_morador/adicionar_visitante', {
         templateUrl: 'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.html',
         css: [
-            'app/components/Admin/Morador/TelaHome/TelaAddVisitante/AddVisitante.css'
+            'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.css'
         ],
         controller: 'AddVisitanteController',
         title: 'Condo Manager - Home'
     })
+
+    .when('/home_funcionario', {
+        templateUrl: 'app/components/Funcionario/TelaHome/HomeFuncionario.html',
+        css: [
+            'app/components/Funcionario/TelaHome/HomeFuncionario.css'
+        ],
+        controller: 'HomeFuncionarioController',
+        title: 'Condo Manager - Home'
+    })
+    
     .otherwise({
         redirectTo: '/login'
     });

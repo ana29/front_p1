@@ -1,7 +1,7 @@
 angular.module('condoManager')
 
-.factory('HomeMoradorService', function($resource, env, $rootScope, $localStorage) {
+.factory('HomeMoradorService', function($resource, env) {
 
-    return HomeMoradorResource = $resource(env.BASE_API_REMOTE+'/condominiums/login');
+    return;
 
 });

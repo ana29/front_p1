@@ -1,7 +1,6 @@
 angular.module('condoManager')
 
-.controller('HomeMoradorController', function($scope, $rootScope, $localStorage, $location) {
-    
+.controller('HomeFuncionarioController', function($scope, $rootScope, $localStorage, $location) {
     $rootScope.usuarioLogado = $localStorage.usuarioLogado;
 
     $rootScope.logout = () => {
@@ -9,5 +8,4 @@ angular.module('condoManager')
         delete $localStorage.usuarioLogado;
         $location.path("/login");
     }
-
 });
