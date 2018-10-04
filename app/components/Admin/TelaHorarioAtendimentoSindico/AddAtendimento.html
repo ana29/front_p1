@@ -1,0 +1,50 @@
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Adicionar Horário de Atendimento</div>
+            <div class="card-body">
+
+                <form ng-submit="add_horario()" name="frm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <div locale="pt-br" class="input-group" moment-picker="diaSemana" format="LL">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                                <input required class="form-control" placeholder="Data" ng-model="diaSemana"
+                                    ng-model-options="{ updateOn: 'blur' }">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group has-success">
+                        <div locale="pt-br" class="input-group" moment-picker="horaInicio" format="HH:mm">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input required class="form-control" placeholder="Hora inicial" ng-model="horaInicio"
+                                ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+                    </div>
+
+                    <div class="form-group has-success">
+                        <div locale="pt-br" class="input-group" moment-picker="horaFinal" format="HH:mm">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input required class="form-control" placeholder="Hora final" ng-model="horaFinal"
+                                ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
