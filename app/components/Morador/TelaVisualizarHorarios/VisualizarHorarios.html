@@ -1,0 +1,48 @@
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Horários de Atendimento do Síndico</div>
+            <div class="card-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Horário</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="horario in horarios" style="cursor:pointer" ng-click="selecionaHorario(horario)"
+                            data-toggle="modal" data-target="#detalhesHorario">
+                            <th scope="row">{{$index+1}}</th>
+                            <td>{{horario.hours}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes do Serviço -->
+<div class="modal fade" id="detalhesHorario" tabindex="-1" role="dialog" aria-labelledby="detalhesHorarioTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{condominioSelecionado.name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Síndico: </b> {{condominioSelecionado.name_admin}}</p>
+                <p><b>Horário: </b> {{selecionado.hours}}</p>
+                <p><b>Telefone: </b> {{condominioSelecionado.phone}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -12,8 +12,8 @@
                 <th>CNPJ CONDOMÍNIO</th>
             </tr>
 
-            <tr ng-repeat="morador in moradores | filter:filtro">
-                <td><a ng-href="#!/home_admin/morador/{{morador.id}}">{{morador.name}}</a></td>
+            <tr ng-repeat="morador in moradores | filter:filtro" style="cursor:pointer">
+                <td>{{morador.name}}</td>
                 <td>{{ morador.cpf }}</td>
                 <td>{{ morador.email }}</td>
                 <td>{{ morador.condominium_cnpj }}</td>
