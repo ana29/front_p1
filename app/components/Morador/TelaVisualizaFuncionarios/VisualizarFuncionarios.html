@@ -1,0 +1,34 @@
+<div cla    s="row">
+    <div class="col-md-8">
+        <input type="search" class="form-control" ng-model="filtroNome" placeholder="Pesquisar por nome">
+    </div>
+    <div class="form-group col-md-4">
+        <select class="form-control" ng-options="funcionario.name for funcionario in funcionarios" ng-model="selectFuncionario">
+            <option value="" default>Todos</option>
+            <option value="funcionario.name">{{funcionario.name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="alert alert-info" ng-show="filtro.length" role="alert">
+    Funcionários encontrados: {{filtro.length}}
+</div>
+
+<div class="alert alert-warning" ng-hide="filtro.length" role="alert">
+    Nenhum funcionário encontrado!
+</div>
+
+<br>
+
+<div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
+    <div align="center" ng-repeat="funcionario in filtro =(funcionarios | filter:{nome:selectFuncionario.name} | filter:{nomePessoa:filtroNome})" class="card"
+        style="width: 15rem; margin: 3px">
+        <div class="card-body">
+            <h5 class="card-title">{{funcionario.name}}</h5>
+            <hr>
+            <p class="card-text">Email: {{funcionario.email}}</p>
+            <p class="card-text">Telefone: {{funcionario.phone}}</p>
+            <button ng-click="selecionaFuncionario(funcionario)" data-toggle="modal" data-target="#detalheFuncionario" class="btn btn-primary">Ver detalhes</button>
+        </div>
+    </div>
+</div>

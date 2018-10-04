@@ -91,7 +91,16 @@ app.config(($routeProvider) => {
             'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.css'
         ],
         controller: 'AddVisitanteController',
-        title: 'Condo Manager - Home'
+        title: 'Condo Manager - Adicionar Visitante'
+    })
+
+    .when('/home_morador/visualizar_funcionarios', {
+        templateUrl: 'app/components/Morador/TelaVisualizaFuncionarios/VisualizarFuncionarios.html',
+        css: [
+            'app/components/Morador/TelaVisualizaFuncionarios/VisualizarFuncionarios.css'
+        ],
+        controller: 'VisualizarFuncionariosController',
+        title: 'Condo Manager - Visualizar Funcionários'
     })
 
     .when('/home_funcionario', {
@@ -102,7 +111,7 @@ app.config(($routeProvider) => {
         controller: 'HomeFuncionarioController',
         title: 'Condo Manager - Home'
     })
-    
+        
     .otherwise({
         redirectTo: '/login'
     });
