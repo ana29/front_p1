@@ -57,6 +57,18 @@ app.config(($routeProvider) => {
         controller: 'AddFuncionarioController',
         title: 'Condo Manager - Administração'
     })
+
+
+     .when('/home_adm/add_horario_atendimento_sindico', {
+        templateUrl: 'app/components/Admin/TelaHorarioAtendimentoSindico/add_horario_atendimento_sindico.html',
+        css: [
+            'app/components/Admin/TelaHorarioAtendimentoSindico/add_horario_atendimento_sindico.css'
+        ],
+        controller: 'add_horario_atendimento_sindicoController',
+        title: 'Condo Manager - Administração'
+    })
+
+
     
     .when('/home_adm/condominios', {
         templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
