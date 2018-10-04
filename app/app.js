@@ -3,7 +3,8 @@ var app = angular.module('condoManager',
      'ngResource',
      'ngMessages',
      'ngStorage',
-     'routeStyles']);
+     'routeStyles',
+     'moment-picker']);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
@@ -59,12 +60,12 @@ app.config(($routeProvider) => {
     })
 
 
-     .when('/home_adm/add_horario_atendimento_sindico', {
-        templateUrl: 'app/components/Admin/TelaHorarioAtendimentoSindico/add_horario_atendimento_sindico.html',
+     .when('/home_adm/adicionar_atendimento', {
+        templateUrl: 'app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimento.html',
         css: [
-            'app/components/Admin/TelaHorarioAtendimentoSindico/add_horario_atendimento_sindico.css'
+            'app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimento.css'
         ],
-        controller: 'add_horario_atendimento_sindicoController',
+        controller: 'AddAtendimentoController',
         title: 'Condo Manager - Administração'
     })
 
