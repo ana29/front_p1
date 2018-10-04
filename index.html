@@ -73,8 +73,14 @@
                                     <a href="#!/home_adm/add_horario_atendimento_sindico">Adicionar Horário de
                                         Atendimento</a>
                                 </li>
+                                <li ng-show="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                                    <a href="#!/home_morador/visualizar_funcionarios">Visualizar Funcionários</a>
+                                </li>
                                 <li ng-show="$root.usuarioLogado.permission==10">
                                     <a href="#!/home_morador/adicionar_visitante">Adicionar Visitante</a>
+                                </li>
+                                <li ng-show="$root.usuarioLogado.permission==10">
+                                    <a href="#!/home_morador/horarios_atendimento">Horários de Atendimento</a>
                                 </li>
                             </ul>
                         </li>
@@ -134,8 +140,14 @@
                                 <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/adicionar_atendimento">Adicionar Horário de Atendimento</a>
                                 </li>
+                                <li ng-show="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                                    <a href="#!/home_morador/visualizar_funcionarios">Visualizar Funcionários</a>
+                                </li>
                                 <li ng-if="$root.usuarioLogado.permission==10">
                                     <a href="#!/home_morador/adicionar_visitante">Adicionar Visitante</a>
+                                </li>
+                                <li ng-show="$root.usuarioLogado.permission==10">
+                                    <a href="#!/home_morador/horarios_atendimento">Horários de Atendimento</a>
                                 </li>
                             </ul>
                         </li>
@@ -168,7 +180,7 @@
         <!-- PAGE CONTAINER -->
         <div class="page-container">
             <!-- HEADER DESKTOP -->
-            <header class="header-desktop">
+            <header class="header-desktop" ng-show="$root.usuarioLogado">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
@@ -362,6 +374,8 @@
     <script src="./app/components/Funcionario/TelaHome/HomeFuncionarioService.js"></script>
     <script src="./app/components/Admin/TelaListarCondominios/ListarCondominiosService.js"></script>
     <script src="./app/components/Admin/TelaListarMoradores/ListarMoradoresService.js"></script>
+    <script src="./app/components/Morador/TelaVisualizarHorarios/VisualizarHorariosService.js"></script>
+    <script src="./app/components/Morador/TelaVisualizarHorarios/VisualizarCondominioService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
@@ -377,6 +391,7 @@
     <script src="./app/components/Funcionario/TelaHome/HomeFuncionarioController.js"></script>
     <script src="./app/components/Admin/TelaListarCondominios/ListarCondominiosController.js"></script>
     <script src="./app/components/Admin/TelaListarMoradores/ListarMoradoresController.js"></script>
+    <script src="./app/components/Morador/TelaVisualizarHorarios/VisualizarHorariosController.js"></script>
 
 </body>
 

@@ -97,9 +97,9 @@ app.config(($routeProvider) => {
     })
     
     .when('/home_morador/adicionar_visitante', {
-        templateUrl: 'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.html',
+        templateUrl: 'app/components/Morador/TelaAddVisitante/AddVisitante.html',
         css: [
-            'app/components/Morador/TelaHome/TelaAddVisitante/AddVisitante.css'
+            'app/components/Morador/TelaAddVisitante/AddVisitante.css'
         ],
         controller: 'AddVisitanteController',
         title: 'Condo Manager - Adicionar Visitante'
@@ -112,6 +112,15 @@ app.config(($routeProvider) => {
         ],
         controller: 'VisualizarFuncionariosController',
         title: 'Condo Manager - Visualizar Funcionários'
+    })
+
+    .when('/home_morador/horarios_atendimento', {
+        templateUrl: 'app/components/Morador/TelaVisualizarHorarios/VisualizarHorarios.html',
+        css: [
+            'app/components/Morador/TelaVisualizarHorarios/VisualizarHorarios.css'
+        ],
+        controller: 'VisualizarHorariosController',
+        title: 'Condo Manager - Horários de Atendimento'
     })
 
     .when('/home_funcionario', {
@@ -144,7 +153,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/home_adm/adicionar_atendimento',
         '/home_adm/moradores',
         '/home_adm/condominios',
-        '/home_morador/adicionar_visitante'
+        '/home_morador/adicionar_visitante',
+        '/home_morador/visualizar_funcionarios'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
@@ -174,7 +184,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/home_adm/adicionar_atendimento',
         '/home_adm/moradores',
         '/home_adm/condominios',
-        '/home_morador/adicionar_visitante'
+        '/home_morador/adicionar_visitante',
+        '/home_morador/visualizar_funcionarios'
     ];
 
     $rootScope.$on('$locationChangeStart', function() {
