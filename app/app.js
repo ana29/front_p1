@@ -69,8 +69,6 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Administração'
     })
 
-
-    
     .when('/home_adm/condominios', {
         templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
         css: [
@@ -121,8 +119,83 @@ app.config(($routeProvider) => {
     });
 });
 
-app.run(['$rootScope', '$route', function($rootScope, $route) {
+app.run(function($rootScope, $route, $localStorage, $location) {
     $rootScope.$on('$routeChangeSuccess', function() {
         document.title = $route.current.title;
     });
-}]);
+
+    $rootScope.usuarioLogado = $localStorage.usuarioLogado || null;
+
+    let rotasBloqueadasNaoLogados = [
+        '/home_adm', 
+        '/home_morador', 
+        '/home_funcionario',
+        '/home_adm/adicionar_funcionario', 
+        '/home_adm/adicionar_morador',
+        '/home_adm/adicionar_atendimento',
+        '/home_adm/moradores',
+        '/home_adm/condominios',
+        '/home_morador/adicionar_visitante'
+    ];
+    let rotasBloqueadasAdmin = [
+        '/login',
+        '/cadastro',
+        '/home_morador',
+        '/home_funcionario',
+        '/home_morador/adicionar_visitante'
+    ];
+    let rotasBloqueadasMorador = [
+        '/login',
+        '/cadastro',
+        '/home_adm',  
+        '/home_funcionario',
+        '/home_adm/adicionar_funcionario', 
+        '/home_adm/adicionar_morador',
+        '/home_adm/adicionar_atendimento',
+        '/home_adm/moradores',
+        '/home_adm/condominios'
+    ];
+    let rotasBloqueadasFuncionario = [
+        '/login',
+        '/cadastro',
+        '/home_adm', 
+        '/home_morador',
+        '/home_adm/adicionar_funcionario', 
+        '/home_adm/adicionar_morador',
+        '/home_adm/adicionar_atendimento',
+        '/home_adm/moradores',
+        '/home_adm/condominios',
+        '/home_morador/adicionar_visitante'
+    ];
+
+    $rootScope.$on('$locationChangeStart', function() {
+        
+        // Bloqueio Usuario não logado
+        if ($rootScope.usuarioLogado == null &&
+            rotasBloqueadasNaoLogados.indexOf($location.path()) != -1) {
+
+            $location.path('/login');
+        }
+
+        // Bloqueio Usuario Admin
+        if ($rootScope.usuarioLogado.permission == 0 &&
+            rotasBloqueadasAdmin.indexOf($location.path()) != -1) {
+
+            $location.path('/home_adm');
+        }
+
+        // Bloqueio Usuario Morador
+        if ($rootScope.usuarioLogado.permission == 10  &&
+            rotasBloqueadasMorador.indexOf($location.path()) != -1) {
+
+            $location.path('/home_morador');
+        }
+
+        // Bloqueio Usuario Funcionário
+        if ($rootScope.usuarioLogado.permission == 5 &&
+            rotasBloqueadasFuncionario.indexOf($location.path()) != -1) {
+
+            $location.path('/home_funcionario');
+        }
+    })
+});

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="./vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.css">
 
-</head>                        
+</head>
 
 <body class="animsition" style="animation-duration: 500ms; opacity: 1;" ng-controller="PageController" ng-cloak>
 
@@ -56,11 +56,11 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
+                        <li class="has-sub" ng-show="$root.usuarioLogado">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li ng-if="false">
+                                <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/moradores">Listar Moradores</a>
                                 </li>
                                 <li>
@@ -69,45 +69,34 @@
                                 <li>
                                     <a href="#!/home_adm/adicionar_funcionario">Adicionar Funcionário</a>
                                 </li>
-				<li>
-                                    <a href="#!/home_adm/add_horario_atendimento_sindico">Adicionar Horário de Atendimento</a>
+                                <li>
+                                    <a href="#!/home_adm/add_horario_atendimento_sindico">Adicionar Horário de
+                                        Atendimento</a>
+                                </li>
+                                <li ng-show="$root.usuarioLogado.permission==10">
+                                    <a href="#!/home_morador/adicionar_visitante">Adicionar Visitante</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-chart-bar"></i>TO DO</a>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-table"></i>TO DO</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-check-square"></i>TO DO</a>
+                        <li ng-if="!$root.usuarioLogado">
+                            <a href="#!/login">
+                                <i class="far fa-check-square"></i>Login</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>TO DO</a>
+                        <li ng-if="!$root.usuarioLogado">
+                            <a href="#!/cadastro">
+                                <i class="fas fa-copy"></i>Cadastro</a>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-map-marker-alt"></i>TO DO</a>
-                        </li>
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Páginas</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="#!/home_adm">Home</a>
-                                </li>
-                                <li ng-if="!$root.usuarioLogado">
-                                    <a href="#!/cadastro">Cadastro</a>
-                                </li>
-                                <li ng-if="!$root.usuarioLogado">
-                                    <a href="#!/login">Login</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -128,62 +117,47 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="has-sub" ng-show="$root.usuarioLogado.cnpj">
+                        <li class="has-sub" ng-show="$root.usuarioLogado">
                             <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Administração</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
 
-                                <li ng-if="false">
+                                <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/moradores">Listar Moradores</a>
                                 </li>
-                                <li>
+                                <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/adicionar_morador">Adicionar Morador</a>
                                 </li>
-                                <li>
+                                <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/adicionar_funcionario">Adicionar Funcionário</a>
                                 </li>
-				<li>
+                                <li ng-if="$root.usuarioLogado.permission==0">
                                     <a href="#!/home_adm/adicionar_atendimento">Adicionar Horário de Atendimento</a>
+                                </li>
+                                <li ng-if="$root.usuarioLogado.permission==10">
+                                    <a href="#!/home_morador/adicionar_visitante">Adicionar Visitante</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-chart-bar"></i>TO DO</a>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-table"></i>TO DO</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-check-square"></i>TO DO</a>
+                        <li ng-if="!$root.usuarioLogado">
+                            <a href="#!/login">
+                                <i class="far fa-check-square"></i>Login</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>TO DO</a>
+                        <li ng-if="!$root.usuarioLogado">
+                            <a href="#!/cadastro">
+                                <i class="fas fa-copy"></i>Cadastro</a>
                         </li>
-                        <li>
+                        <li ng-if="false">
                             <a href="#">
                                 <i class="fas fa-map-marker-alt"></i>TO DO</a>
-                        </li>
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Páginas</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="#!/home_adm">Home</a>
-                                </li>
-                                <li ng-if="false">
-                                    <a href="#!/home_adm/condominios">Listar Condomínios</a>
-                                </li>
-                                <li ng-if="!$root.usuarioLogado">
-                                    <a href="#!/cadastro">Cadastro</a>
-                                </li>
-                                <li ng-if="!$root.usuarioLogado">
-                                    <a href="#!/login">Login</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
