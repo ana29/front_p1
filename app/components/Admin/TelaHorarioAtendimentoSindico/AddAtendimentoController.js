@@ -18,7 +18,7 @@ angular.module('condoManager')
         .then(() => {
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
-                alert("Salvo com sucesso!");
+                console.log("Horário de atendimento adicionado com sucesso!");
             }
         })
 

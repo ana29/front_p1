@@ -13,9 +13,8 @@ angular.module('condoManager')
         .then((res) => {
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Logado com sucesso" };
-                alert("Logado com sucesso!");
+                console.log("Logado com sucesso!");
                 $location.path("/home_adm");
-                console.log(res);
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
             }
@@ -35,9 +34,8 @@ angular.module('condoManager')
         .then((res) => {
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Logado com sucesso" };
-                alert("Logado com sucesso!");
+                console.log("Logado com sucesso!");
                 $location.path("/home_morador");
-                console.log(res);
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
             }
@@ -57,9 +55,8 @@ angular.module('condoManager')
         .then((res) => {
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Logado com sucesso" };
-                alert("Logado com sucesso!");
+                console.log("Logado com sucesso!");
                 $location.path("/home_funcionario");
-                console.log(res);
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
             }

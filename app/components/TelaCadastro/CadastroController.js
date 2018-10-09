@@ -12,7 +12,7 @@ angular.module('condoManager')
         .then(() => {
             if ($scope.frm.$valid) {
                 $scope.mensagem = { texto: "Salvo com sucesso" };
-                alert("Salvo com sucesso!");
+                console.log("Condomínio cadastrado com sucesso!");
                 $location.path("/login");
             }
         })

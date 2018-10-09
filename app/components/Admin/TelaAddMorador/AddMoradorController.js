@@ -1,6 +1,6 @@
 angular.module('condoManager')
 
-.controller('AddMoradorController', function($scope, AddMoradorService, $location, $localStorage) {
+.controller('AddMoradorController', function($scope, AddMoradorService, $localStorage) {
 
     $scope.resident = new AddMoradorService();
 
@@ -13,13 +13,19 @@ angular.module('condoManager')
 
         .then(() => {
             if ($scope.frm.$valid) {
-                $scope.mensagem = { texto: "Salvo com sucesso" };
-                alert("Salvo com sucesso!");
+                $scope.mensagem = { texto: "Morador adicionado com sucesso" };
+                console.log("Morador adicionado com sucesso")
             }
+
+            $scope.resident.name = '';
+            $scope.resident.house = '';
+            $scope.resident.cpf = '';
+            $scope.resident.email = '';
+            $scope.resident.phone = '';
+            $scope.resident.password = '';
         })
 
         .catch((erro) => {
-            alert("Não foi possível salvar");
             $scope.mensagem = { texto: "Não foi possível salvar!" };
             console.log(erro);
         });
