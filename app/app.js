@@ -14,6 +14,7 @@ app.constant('env', {
 app.config(($routeProvider) => {
     $routeProvider
     
+    //Login
     .when('/login', {
         templateUrl: 'app/components/TelaLogin/Login.html',
         css: [
@@ -23,6 +24,7 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Login'
     })
     
+    //Cadastro
     .when('/cadastro', {
         templateUrl: 'app/components/TelaCadastro/Cadastro.html',
         css: [
@@ -32,6 +34,7 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Cadastro'
     })
     
+    //Admin
     .when('/home_adm', {
         templateUrl: 'app/components/Admin/TelaHome/HomeAdmin.html',
         css: [
@@ -41,7 +44,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Home'
     })
     
-    .when('/home_adm/adicionar_morador', {
+    //Admin
+    .when('/adicionar_morador', {
         templateUrl: 'app/components/Admin/TelaAddMorador/AddMorador.html',
         css: [
             'app/components/Admin/TelaAddMorador/AddMorador.css'
@@ -50,7 +54,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Administração'
     })
     
-    .when('/home_adm/adicionar_funcionario', {
+    //Admin
+    .when('/adicionar_funcionario', {
         templateUrl: 'app/components/Admin/TelaAddFuncionario/AddFuncionario.html',
         css: [
             'app/components/Admin/TelaAddFuncionario/AddFuncionario.css'
@@ -59,8 +64,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Administração'
     })
 
-
-     .when('/home_adm/adicionar_atendimento', {
+    //Admin
+    .when('/adicionar_atendimento', {
         templateUrl: 'app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimento.html',
         css: [
             'app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimento.css'
@@ -69,7 +74,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Administração'
     })
 
-    .when('/home_adm/condominios', {
+    //Admin
+    .when('/condominios', {
         templateUrl: 'app/components/Admin/TelaListarCondominios/ListarCondominios.html',
         css: [
             'app/components/Admin/TelaListarCondominios/ListarCondominios.css'
@@ -78,7 +84,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Condomínios'
     })
     
-    .when('/home_adm/moradores', {
+    //Admin
+    .when('/moradores', {
         templateUrl: 'app/components/Admin/TelaListarMoradores/ListarMoradores.html',
         css: [
             'app/components/Admin/TelaListarMoradores/ListarMoradores.css'
@@ -86,7 +93,18 @@ app.config(($routeProvider) => {
         controller: 'ListarMoradoresController',
         title: 'Condo Manager - Moradores'
     })
+
+    //Admin
+    .when('/adicionar_local', {
+        templateUrl: 'app/components/Admin/TelaAddLocal/AddLocal.html',
+        css: [
+            'app/components/Admin/TelaAddLocal/AddLocal.css'
+        ],
+        controller: 'AddLocalController',
+        title: 'Condo Manager - Adicionar Local de Reserva'
+    })
     
+    //Morador
     .when('/home_morador', {
         templateUrl: 'app/components/Morador/TelaHome/HomeMorador.html',
         css: [
@@ -96,7 +114,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Home'
     })
     
-    .when('/home_morador/adicionar_visitante', {
+    //Morador
+    .when('/adicionar_visitante', {
         templateUrl: 'app/components/Morador/TelaAddVisitante/AddVisitante.html',
         css: [
             'app/components/Morador/TelaAddVisitante/AddVisitante.css'
@@ -105,7 +124,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Adicionar Visitante'
     })
 
-    .when('/home_morador/visualizar_funcionarios', {
+    //Ambos
+    .when('/visualizar_funcionarios', {
         templateUrl: 'app/components/Morador/TelaVisualizaFuncionarios/VisualizarFuncionarios.html',
         css: [
             'app/components/Morador/TelaVisualizaFuncionarios/VisualizarFuncionarios.css'
@@ -114,7 +134,8 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Visualizar Funcionários'
     })
 
-    .when('/home_morador/horarios_atendimento', {
+    //Morador
+    .when('/horarios_atendimento', {
         templateUrl: 'app/components/Morador/TelaVisualizarHorarios/VisualizarHorarios.html',
         css: [
             'app/components/Morador/TelaVisualizarHorarios/VisualizarHorarios.css'
@@ -123,6 +144,7 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Horários de Atendimento'
     })
 
+    //Funcionario
     .when('/home_funcionario', {
         templateUrl: 'app/components/Funcionario/TelaHome/HomeFuncionario.html',
         css: [
@@ -130,6 +152,26 @@ app.config(($routeProvider) => {
         ],
         controller: 'HomeFuncionarioController',
         title: 'Condo Manager - Home'
+    })
+
+    //Ambos
+    .when('/visualizar_anuncios', {
+        templateUrl: 'app/components/TelaListarAnuncios/ListarAnuncios.html',
+        css: [
+            'app/components/TelaListarAnuncios/ListarAnuncios.css'
+        ],
+        controller: 'ListarAnunciosController',
+        title: 'Condo Manager - Anúncios'
+    })
+
+    //Ambos
+    .when('/visualizar_locais', {
+        templateUrl: 'app/components/TelaListarLocais/ListarLocais.html',
+        css: [
+            'app/components/TelaListarLocais/ListarLocais.css'
+        ],
+        controller: 'ListarLocaisController',
+        title: 'Condo Manager - Locais'
     })
         
     .otherwise({
@@ -148,44 +190,47 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/home_adm', 
         '/home_morador', 
         '/home_funcionario',
-        '/home_adm/adicionar_funcionario', 
-        '/home_adm/adicionar_morador',
-        '/home_adm/adicionar_atendimento',
-        '/home_adm/moradores',
-        '/home_adm/condominios',
-        '/home_morador/adicionar_visitante',
-        '/home_morador/visualizar_funcionarios'
+        '/adicionar_funcionario', 
+        '/adicionar_morador',
+        '/adicionar_atendimento',
+        '/moradores',
+        '/condominios',
+        '/adicionar_visitante',
+        '/visualizar_funcionarios',
+        '/adicionar_local'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
         '/cadastro',
         '/home_morador',
         '/home_funcionario',
-        '/home_morador/adicionar_visitante'
+        '/adicionar_visitante'
     ];
     let rotasBloqueadasMorador = [
         '/login',
         '/cadastro',
         '/home_adm',  
         '/home_funcionario',
-        '/home_adm/adicionar_funcionario', 
-        '/home_adm/adicionar_morador',
-        '/home_adm/adicionar_atendimento',
-        '/home_adm/moradores',
-        '/home_adm/condominios'
+        '/adicionar_funcionario', 
+        '/adicionar_morador',
+        '/adicionar_atendimento',
+        '/moradores',
+        '/condominios',
+        '/adicionar_local'
     ];
     let rotasBloqueadasFuncionario = [
         '/login',
         '/cadastro',
         '/home_adm', 
         '/home_morador',
-        '/home_adm/adicionar_funcionario', 
-        '/home_adm/adicionar_morador',
-        '/home_adm/adicionar_atendimento',
-        '/home_adm/moradores',
-        '/home_adm/condominios',
-        '/home_morador/adicionar_visitante',
-        '/home_morador/visualizar_funcionarios'
+        '/adicionar_funcionario', 
+        '/adicionar_morador',
+        '/adicionar_atendimento',
+        '/moradores',
+        '/condominios',
+        '/adicionar_visitante',
+        '/visualizar_funcionarios',
+        '/adicionar_local'
     ];
 
     $rootScope.$on('$locationChangeStart', function() {
