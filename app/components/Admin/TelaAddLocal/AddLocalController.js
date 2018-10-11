@@ -4,6 +4,8 @@ angular.module('condoManager')
 
  $scope.local = new AddLocalService();
 
+ $scope.local.permission = 0;
+
     $scope.cadastrar = () => {
         
         $scope.local.$save()
@@ -17,7 +19,9 @@ angular.module('condoManager')
           
         })
 
+
         .catch((erro) => {
+	    alert("Não foi possível salvar");
             $scope.mensagem = { texto: "Não foi possível salvar!" };
             console.log(erro);
         });
