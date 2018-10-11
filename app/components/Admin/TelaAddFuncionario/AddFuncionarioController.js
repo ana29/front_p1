@@ -16,6 +16,12 @@ angular.module('condoManager')
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 console.log("Funcionário adicionado com sucesso!");
             }
+
+            $scope.funcionario.name = '';
+            $scope.funcionario.cpf = '';
+            $scope.funcionario.email = '';
+            $scope.funcionario.phone = '';
+            $scope.funcionario.password = '';
         })
 
         .catch((erro) => {

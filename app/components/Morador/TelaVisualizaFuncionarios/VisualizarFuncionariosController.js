@@ -6,7 +6,15 @@ angular.module('condoManager')
 
     let buscaFuncionarios = () => {
         // query Faz um get no recurso api/staff
-        VisualizarFuncionariosService.query((funcionarios) => {
+        let pesquisa = null;
+
+        if ($localStorage.usuarioLogado.condominium_cnpj) {
+            pesquisa = $localStorage.usuarioLogado.condominium_cnpj;
+        } else {
+            pesquisa = $localStorage.usuarioLogado.cnpj;
+        }
+
+        VisualizarFuncionariosService.query({cnpj: pesquisa}, (funcionarios) => {
             $scope.funcionarios = funcionarios;
             $scope.mensagem = {};
         },
@@ -20,6 +28,23 @@ angular.module('condoManager')
                     texto: 'Não foi possível obter a lista de serviços'
                 };
             });
+    };
+
+    let listarMoradores = () => {
+        
+        ListarMoradoresService.query({cnpj: $localStorage.usuarioLogado.cnpj},(moradores) => {
+            $scope.moradores = moradores;
+            $scope.mensagem = {};
+        },
+        
+        (erro) => {
+            console.log("Não foi possível obter a lista de moradores");
+            console.log(erro);
+
+            $scope.mensagem = {
+                texto: 'Não foi possível obter a lista de moradores'
+            };
+        });
     };
 
     buscaFuncionarios();

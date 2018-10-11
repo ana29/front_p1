@@ -1,6 +1,6 @@
 angular.module('condoManager')
 
-.controller('ListarMoradoresController', function ($scope, ListarMoradoresService) {
+.controller('ListarMoradoresController', function ($scope, ListarMoradoresService, $localStorage) {
 
     $scope.moradores = [];
     $scope.filtro = '';
@@ -9,7 +9,7 @@ angular.module('condoManager')
 
     let listarMoradores = () => {
         
-        ListarMoradoresService.query((moradores) => {
+        ListarMoradoresService.query({cnpj: $localStorage.usuarioLogado.cnpj},(moradores) => {
             $scope.moradores = moradores;
             $scope.mensagem = {};
         },
