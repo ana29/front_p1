@@ -80,13 +80,17 @@
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
+                        <li ng-if="$root.usuarioLogado.permission==10">
+                            <a href="#!/adicionar_visitante">
+                                <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
+                        </li>
                         <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Visualizar Funcionários</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10">
-                            <a href="#!/adicionar_visitante">
-                                <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
+                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                            <a href="#!/visualizar_visitantes">
+                                <i class="fas fa-users"></i>Visualizar Visitantes</a>
                         </li>
                         <li ng-if="$root.usuarioLogado.permission==10">
                             <a href="#!/horarios_atendimento">
@@ -151,13 +155,17 @@
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
+                        <li ng-if="$root.usuarioLogado.permission==10">
+                            <a href="#!/adicionar_visitante">
+                                <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
+                        </li>
                         <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Visualizar Funcionários</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10">
-                            <a href="#!/adicionar_visitante">
-                                <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
+                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                            <a href="#!/visualizar_visitantes">
+                                <i class="fas fa-users"></i>Visualizar Visitantes</a>
                         </li>
                         <li ng-if="$root.usuarioLogado.permission==10">
                             <a href="#!/horarios_atendimento">
@@ -388,6 +396,7 @@
     <script src="./app/components/TelaListarAnuncios/ListarAnunciosService.js"></script>
     <script src="./app/components/TelaListarLocais/ListarLocaisService.js"></script>
     <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioService.js"></script>
+    <script src="./app/components/TelaListarVisitantes/ListarVisitantesService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
@@ -408,6 +417,7 @@
     <script src="./app/components/TelaListarAnuncios/ListarAnunciosController.js"></script>
     <script src="./app/components/TelaListarLocais/ListarLocaisController.js"></script>
     <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioController.js"></script>
+    <script src="./app/components/TelaListarVisitantes/ListarVisitantesController.js"></script>
 
 </body>
 

@@ -144,6 +144,16 @@ app.config(($routeProvider) => {
         title: 'Condo Manager - Visualizar Funcionários'
     })
 
+    //Ambos
+    .when('/visualizar_visitantes', {
+        templateUrl: 'app/components/TelaListarVisitantes/ListarVisitantes.html',
+        css: [
+            'app/components/TelaListarVisitantes/ListarVisitantes.css'
+        ],
+        controller: 'ListarVisitantesController',
+        title: 'Condo Manager - Visitantes'
+    })
+
     //Morador
     .when('/horarios_atendimento', {
         templateUrl: 'app/components/Morador/TelaVisualizarHorarios/VisualizarHorarios.html',
