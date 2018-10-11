@@ -103,6 +103,16 @@ app.config(($routeProvider) => {
         controller: 'AddLocalController',
         title: 'Condo Manager - Adicionar Local de Reserva'
     })
+
+    //Admin
+    .when('/adicionar_anuncio', {
+        templateUrl: 'app/components/Admin/TelaAddAnuncio/AddAnuncio.html',
+        css: [
+            'app/components/Admin/TelaAddAnuncio/AddAnuncio.css'
+        ],
+        controller: 'AddAnuncioController',
+        title: 'Condo Manager - Adicionar Anúncio'
+    })
     
     //Morador
     .when('/home_morador', {
@@ -197,7 +207,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/condominios',
         '/adicionar_visitante',
         '/visualizar_funcionarios',
-        '/adicionar_local'
+        '/adicionar_local',
+        '/adicionar_anuncio'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
@@ -216,7 +227,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/adicionar_atendimento',
         '/moradores',
         '/condominios',
-        '/adicionar_local'
+        '/adicionar_local',
+        '/adicionar_anuncio'
     ];
     let rotasBloqueadasFuncionario = [
         '/login',
@@ -230,7 +242,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/condominios',
         '/adicionar_visitante',
         '/visualizar_funcionarios',
-        '/adicionar_local'
+        '/adicionar_local',
+        '/adicionar_anuncio'
     ];
 
     $rootScope.$on('$locationChangeStart', function() {

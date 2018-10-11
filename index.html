@@ -76,6 +76,10 @@
                             <a href="#!/adicionar_local">
                                 <i class="fas fa-calendar"></i>Locais para Reserva</a>
                         </li>
+                        <li ng-if="$root.usuarioLogado.permission==0">
+                            <a href="#!/adicionar_anuncio">
+                                <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
+                        </li>
                         <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Visualizar Funcionários</a>
@@ -142,6 +146,10 @@
                         <li ng-if="$root.usuarioLogado.permission==0">
                             <a href="#!/adicionar_local">
                                 <i class="fas fa-calendar"></i>Locais para Reserva</a>
+                        </li>
+                        <li ng-if="$root.usuarioLogado.permission==0">
+                            <a href="#!/adicionar_anuncio">
+                                <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
                         <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
                             <a href="#!/visualizar_funcionarios">
@@ -379,6 +387,7 @@
     <script src="./app/components/Admin/TelaAddLocal/AddLocalService.js"></script>
     <script src="./app/components/TelaListarAnuncios/ListarAnunciosService.js"></script>
     <script src="./app/components/TelaListarLocais/ListarLocaisService.js"></script>
+    <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
@@ -398,6 +407,7 @@
     <script src="./app/components/Admin/TelaAddLocal/AddLocalController.js"></script>
     <script src="./app/components/TelaListarAnuncios/ListarAnunciosController.js"></script>
     <script src="./app/components/TelaListarLocais/ListarLocaisController.js"></script>
+    <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioController.js"></script>
 
 </body>
 
