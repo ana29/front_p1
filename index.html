@@ -55,7 +55,7 @@
             </div>
             <nav class="navbar-mobile">
                 <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled" ng-show="$root.usuarioLogado">
+                    <ul class="navbar-mobile__list list-unstyled">
                         <li ng-if="$root.usuarioLogado.permission==0">
                             <a href="#!/moradores">
                                 <i class="fas fa-users"></i>Listar Moradores</a>
@@ -126,7 +126,7 @@
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
-                    <ul class="list-unstyled navbar__list" ng-show="$root.usuarioLogado">
+                    <ul class="list-unstyled navbar__list">
                         <li ng-if="$root.usuarioLogado.permission==0">
                             <a href="#!/moradores">
                                 <i class="fas fa-users"></i>Listar Moradores</a>
