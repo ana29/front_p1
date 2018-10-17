@@ -1,1 +1,59 @@
-<h1>Listar Locais</h1>
+<div class="container">
+
+    <div class="text-center title-1">Locais</div><br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <input type="search" class="form-control" ng-model="filtroNome" placeholder="Pesquisar por nome">
+        </div>
+    </div>
+    <br>
+    <div class="alert alert-info" ng-show="filtro.length" role="alert">
+        Locais encontrados: {{filtro.length}}
+    </div>
+    <br>
+    <div class="alert alert-warning" ng-hide="filtro.length" role="alert">
+        Nenhum local encontrado!
+    </div>
+
+    <br>
+
+    <div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
+        <div align="center" ng-repeat="local in filtro =(locais | filter: filtroNome)"
+            class="card" style="width: 15rem; margin: 3px">
+            <div class="card-body">
+                <h5 class="card-title">Local</h5>
+                <hr>
+                <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{anuncio.announcement}}</p>
+                <br>
+                <button ng-click="selecionaLocal(local)" data-toggle="modal" data-target="#detalheLocal"
+                    class="btn btn-primary">Ver mais</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal com Detalhes do Serviço -->
+<div class="modal fade" id="detalheLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{selecionado.place_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Dias disponível: </b></p> {{selecionado.days_booking}}
+                <p><b>Descrição:</b>
+                <p>{{selecionado.about}}</p>
+                <p ng-if="selecionado.about==null"><i>Sem descrição</i></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
