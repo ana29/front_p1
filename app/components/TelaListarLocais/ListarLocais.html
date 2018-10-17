@@ -24,7 +24,7 @@
             <div class="card-body">
                 <h5 class="card-title">Local</h5>
                 <hr>
-                <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{anuncio.announcement}}</p>
+                <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{local.place_name}}</p>
                 <br>
                 <button ng-click="selecionaLocal(local)" data-toggle="modal" data-target="#detalheLocal"
                     class="btn btn-primary">Ver mais</button>
@@ -46,7 +46,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p><b>Dias disponível: </b></p> {{selecionado.days_booking}}
+                <p><b>Dias disponível: </b></p> {{selecionado.days_booking}} ({{selecionado.start_time}} - {{selecionado.end_time}})
                 <p><b>Descrição:</b>
                 <p>{{selecionado.about}}</p>
                 <p ng-if="selecionado.about==null"><i>Sem descrição</i></p>

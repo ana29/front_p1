@@ -15,7 +15,7 @@ angular.module('condoManager')
             pesquisa = $localStorage.usuarioLogado.cnpj;
         }
 
-        ListarLocaisService.query({cnpj: pesquisa}, (anuncios) => {
+        ListarLocaisService.query({cnpj: pesquisa}, (locais) => {
             $scope.locais = locais;
             $scope.mensagem = {};
         },
