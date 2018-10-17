@@ -1,1 +1,66 @@
-<h1>Adicionar Local para Reserva</h1>
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Adicionar local para reserva</div>
+            <div class="card-body">
+
+                <form ng-submit="cadastrarLocal()" name="frm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Nome</label>
+                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="local.place_name">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Descrição</label>
+                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="local.about">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Dias da semana disponíveis</label>
+                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="local.days_booking">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group has-success">
+                        <div locale="pt-br" class="input-group" moment-picker="local.start_time" format="HH:mm">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input required class="form-control" placeholder="Hora inicial" ng-model="local.start_time"
+                                ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+                    </div>
+
+                    <div class="form-group has-success">
+                        <div locale="pt-br" class="input-group" moment-picker="local.end_time" format="HH:mm">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input required class="form-control" placeholder="Hora final" ng-model="local.end_time"
+                                ng-model-options="{ updateOn: 'blur' }">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
