@@ -1,1 +1,23 @@
-<h1>Adicionar Anuncios</h1>
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Adicionar anúncio</div>
+            <div class="card-body">
+
+                <form ng-submit="cadastrarAnuncio()" name="frm">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <textarea name="textarea-input" id="textarea-input" ng-model="anuncio.announcement"
+                                      rows="9" placeholder="Conteúdo do anúncio" class="form-control"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
