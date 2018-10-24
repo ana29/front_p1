@@ -80,6 +80,12 @@
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
+
+		        <li ng-if="$root.usuarioLogado.permission==0">
+                            <a href="#!/adicionar_servico">
+                                <i class="fa fa-wrench"></i>Cadastrar serviço</a>
+                        </li>
+
                         <li ng-if="$root.usuarioLogado.permission==10">
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
@@ -154,6 +160,11 @@
                         <li ng-if="$root.usuarioLogado.permission==0">
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
+
+
+			<li ng-if="$root.usuarioLogado.permission==0">
+                            <a href="#!/adicionar_servico">
+                                <i class="fa fa-wrench"></i>Cadastrar serviço</a>
                         </li>
                         <li ng-if="$root.usuarioLogado.permission==10">
                             <a href="#!/adicionar_visitante">
@@ -177,7 +188,7 @@
                         </li>
                         <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
                             <a href="#!/visualizar_anuncios">
-                                <i class="fas fa-bullhorn"></i>Anúncios</a>
+                                <i class="fa fa-wrench"></i>Anúncios</a>
                         </li>
                         <li ng-if="!$root.usuarioLogado">
                             <a href="#!/login">
@@ -382,6 +393,7 @@
     <script src="./app/components/TelaCadastro/CadastroService.js"></script>
     <script src="./app/components/Admin/TelaHome/HomeAdminService.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorService.js"></script>
+    <script src="./app/components/Admin/TelaAddServico/AddServicoService.js"></script>
     <script src="./app/components/Admin/TelaAddFuncionario/AddFuncionarioService.js"></script>
     <script src="./app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimentoService.js"></script>
     <script src="./app/components/Morador/TelaHome/HomeMoradorService.js"></script>
@@ -404,6 +416,7 @@
     <script src="./app/components/TelaCadastro/CadastroController.js"></script>
     <script src="./app/components/Admin/TelaHome/HomeAdminController.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorController.js"></script>
+    <script src="./app/components/Admin/TelaAddServico/AddServicoController.js"></script>
     <script src="./app/components/Admin/TelaAddFuncionario/AddFuncionarioController.js"></script>
     <script src="./app/components/Admin/TelaHorarioAtendimentoSindico/AddAtendimentoController.js"></script>
     <script src="./app/components/Morador/TelaHome/HomeMoradorController.js"></script>

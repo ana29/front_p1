@@ -1,0 +1,38 @@
+<div class="container row justify-content-center">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header text-center title-2">Cadastrar serviço</div>
+            <div class="card-body">
+
+                <form ng-submit="cadastrarServico()" name="frm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Nome</label>
+                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="servico.place_name">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="cc-name" class="control-label mb-1">Descrição</label>
+                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="servico.about">
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+  		 <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
