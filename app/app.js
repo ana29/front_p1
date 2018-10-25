@@ -4,7 +4,8 @@ var app = angular.module('condoManager',
      'ngMessages',
      'ngStorage',
      'routeStyles',
-     'moment-picker']);
+     'moment-picker',
+     'ngMask']);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
@@ -229,7 +230,7 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/visualizar_funcionarios',
         '/adicionar_local',
         '/adicionar_anuncio',
-	'/adicionar_servico'
+	    '/adicionar_servico'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
@@ -250,7 +251,7 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/condominios',
         '/adicionar_local',
         '/adicionar_anuncio',
-	'/adicionar_servico'
+	    '/adicionar_servico'
     ];
     let rotasBloqueadasFuncionario = [
         '/login',
@@ -266,7 +267,7 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/visualizar_funcionarios',
         '/adicionar_local',
         '/adicionar_anuncio',
-	'/adicionar_servico'
+	    '/adicionar_servico'
     ];
 
     $rootScope.$on('$locationChangeStart', function() {
@@ -279,21 +280,21 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         }
 
         // Bloqueio Usuario Admin
-        if ($rootScope.usuarioLogado.permission == 0 &&
+        if ($rootScope.usuarioLogado.role == 'ADMIN' &&
             rotasBloqueadasAdmin.indexOf($location.path()) != -1) {
 
             $location.path('/home_adm');
         }
 
         // Bloqueio Usuario Morador
-        if ($rootScope.usuarioLogado.permission == 10  &&
+        if ($rootScope.usuarioLogado.role == 'RESIDENT'  &&
             rotasBloqueadasMorador.indexOf($location.path()) != -1) {
 
             $location.path('/home_morador');
         }
 
         // Bloqueio Usuario Funcionário
-        if ($rootScope.usuarioLogado.permission == 5 &&
+        if ($rootScope.usuarioLogado.role == 'STAFF' &&
             rotasBloqueadasFuncionario.indexOf($location.path()) != -1) {
 
             $location.path('/home_funcionario');

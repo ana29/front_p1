@@ -56,57 +56,57 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/moradores">
                                 <i class="fas fa-users"></i>Listar Moradores</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_atendimento">
                                 <i class="fas fa-clock"></i>Horário de Atendimento</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_local">
                                 <i class="fas fa-calendar"></i>Locais para Reserva</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
 
-		        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_servico">
                                 <i class="fa fa-wrench"></i>Cadastrar serviço</a>
                         </li>
 
-                        <li ng-if="$root.usuarioLogado.permission==10">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Visualizar Funcionários</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_visitantes">
                                 <i class="fas fa-users"></i>Visualizar Visitantes</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/horarios_atendimento">
                                 <i class="fas fa-clock"></i>Horários de Atendimento</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_locais">
                                 <i class="fas fa-warehouse"></i>Locais</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_anuncios">
                                 <i class="fas fa-bullhorn"></i>Anúncios</a>
                         </li>
@@ -137,56 +137,55 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/moradores">
                                 <i class="fas fa-users"></i>Listar Moradores</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_atendimento">
                                 <i class="fas fa-clock"></i>Horário de Atendimento</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_local">
                                 <i class="fas fa-calendar"></i>Locais para Reserva</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
 
-
-			<li ng-if="$root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_servico">
                                 <i class="fa fa-wrench"></i>Cadastrar serviço</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Visualizar Funcionários</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_visitantes">
                                 <i class="fas fa-users"></i>Visualizar Visitantes</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/horarios_atendimento">
                                 <i class="fas fa-clock"></i>Horários de Atendimento</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_locais">
                                 <i class="fas fa-warehouse"></i>Locais</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.permission==10 || $root.usuarioLogado.permission==0">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_anuncios">
                                 <i class="fa fa-wrench"></i>Anúncios</a>
                         </li>
@@ -211,7 +210,7 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
+                            <form class="form-header">
                                 <!--<input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
                                 <button class="au-btn--submit" type="submit">
                                     <i class="zmdi zmdi-search"></i>
@@ -220,7 +219,7 @@
                             <div class="header-button">
 
                                 <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
+                                    <div class="noti__item js-item-menu" ng-if="false">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
                                         <div class="mess-dropdown js-dropdown">
@@ -242,27 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                                         <span class="quantity">3</span>
@@ -289,7 +268,7 @@
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
+                                                <a href="#!/visualizar_anuncios">All notifications</a>
                                             </div>
                                         </div>
                                     </div>
@@ -302,7 +281,7 @@
                                             <i class="zmdi zmdi-notifications"></i>
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">{{$root.usuarioLogado.name_admin}}</a>
+                                            <a class="js-acc-btn" href="#">{{$root.usuarioLogado.name}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -315,7 +294,7 @@
                                                     <h5 class="name">
                                                         <a href="#">{{$root.usuarioLogado.name}}</a>
                                                     </h5>
-                                                    <span class="email">{{$root.usuarioLogado.email_admin}}</span>
+                                                    <span class="email">{{$root.usuarioLogado.email}}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
@@ -364,6 +343,7 @@
     <script src="./vendor/angular-route-styles/route-styles.js"></script>
     <script src="./node_modules/moment/min/moment-with-locales.min.js"></script>
     <script src="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
+    <script src="./node_modules/ng-mask/dist/ngMask.min.js"></script>
 
     <!-- Dependências do Template -->
     <script src="./vendor/jquery-ui.min.js"></script>
@@ -387,10 +367,7 @@
     <script src="./app/partials/partials.js"></script>
 
     <!-- Services -->
-    <script src="./app/components/TelaLogin/LoginAdminService.js"></script>
-    <script src="./app/components/TelaLogin/LoginResidentService.js"></script>
-    <script src="./app/components/TelaLogin/LoginStaffService.js"></script>
-    <script src="./app/components/TelaCadastro/CadastroService.js"></script>
+    <script src="./app/components/TelaLogin/LoginService.js"></script>
     <script src="./app/components/Admin/TelaHome/HomeAdminService.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorService.js"></script>
     <script src="./app/components/Admin/TelaAddServico/AddServicoService.js"></script>
@@ -409,6 +386,8 @@
     <script src="./app/components/TelaListarLocais/ListarLocaisService.js"></script>
     <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioService.js"></script>
     <script src="./app/components/TelaListarVisitantes/ListarVisitantesService.js"></script>
+    <script src="./app/components/TelaCadastro/CondominiumService.js"></script>
+    <script src="./app/components/TelaCadastro/UserService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>

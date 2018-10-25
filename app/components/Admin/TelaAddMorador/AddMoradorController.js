@@ -2,14 +2,15 @@ angular.module('condoManager')
 
 .controller('AddMoradorController', function($scope, AddMoradorService, $localStorage) {
 
-    $scope.resident = new AddMoradorService();
+    $scope.user = new AddMoradorService();
 
-    $scope.resident.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
-    $scope.resident.permission = 10;
+    $scope.user.cnpj = $localStorage.usuarioLogado.cnpj;
+    $scope.user.job = 'Morador';
+    $scope.user.role = 'RESIDENT';
 
     $scope.cadastrar = () => {
         
-        $scope.resident.$save()
+        $scope.user.$save()
 
         .then(() => {
             if ($scope.frm.$valid) {
@@ -17,12 +18,12 @@ angular.module('condoManager')
                 console.log("Morador adicionado com sucesso")
             }
 
-            $scope.resident.name = '';
-            $scope.resident.house = '';
-            $scope.resident.cpf = '';
-            $scope.resident.email = '';
-            $scope.resident.phone = '';
-            $scope.resident.password = '';
+            $scope.user.name = '';
+            $scope.user.address = '';
+            $scope.user.cpf = '';
+            $scope.user.email = '';
+            $scope.user.phone = '';
+            $scope.user.password = '';
         })
 
         .catch((erro) => {

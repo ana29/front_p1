@@ -1,15 +1,16 @@
 angular.module('condoManager')
 
-.controller('AddFuncionarioController', function($scope, AddFuncionarioService, $location, $localStorage) {
+.controller('AddFuncionarioController', function($scope, AddFuncionarioService, $localStorage) {
 
-    $scope.funcionario = new AddFuncionarioService();
+    $scope.user = new AddFuncionarioService();
 
-    $scope.funcionario.condominium_cnpj = $localStorage.usuarioLogado.cnpj;
-    $scope.funcionario.permission = 5;
+    $scope.user.cnpj = $localStorage.usuarioLogado.cnpj;
+    $scope.user.job = 'Funcionário';
+    $scope.user.role = 'STAFF';
 
     $scope.cadastrar = () => {
         
-        $scope.funcionario.$save()
+        $scope.user.$save()
 
         .then(() => {
             if ($scope.frm.$valid) {
@@ -17,11 +18,12 @@ angular.module('condoManager')
                 console.log("Funcionário adicionado com sucesso!");
             }
 
-            $scope.funcionario.name = '';
-            $scope.funcionario.cpf = '';
-            $scope.funcionario.email = '';
-            $scope.funcionario.phone = '';
-            $scope.funcionario.password = '';
+            $scope.user.address = '';
+            $scope.user.name = '';
+            $scope.user.cpf = '';
+            $scope.user.email = '';
+            $scope.user.phone = '';
+            $scope.user.password = '';
         })
 
         .catch((erro) => {

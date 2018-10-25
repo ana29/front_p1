@@ -1,13 +1,13 @@
 angular.module('condoManager')
 
-.controller('VisualizarHorariosController', function($scope, VisualizarHorariosService, VisualizarCondominioService, $localStorage, $location) {
+.controller('VisualizarHorariosController', function($scope, VisualizarHorariosService, VisualizarCondominioService, $localStorage) {
     
     $scope.horarios = [];
     $scope.condominioSelecionado = null;
 
     let listarHorarios = () => {
         
-        VisualizarHorariosService.query({cnpj: $localStorage.usuarioLogado.condominium_cnpj},(horarios) => {
+        VisualizarHorariosService.query({cnpj: $localStorage.usuarioLogado.cnpj},(horarios) => {
             $scope.horarios = horarios;
         },
         

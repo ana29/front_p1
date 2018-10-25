@@ -6,7 +6,7 @@
             <input type="search" class="form-control" ng-model="filtroNome" placeholder="Pesquisar por nome">
         </div>
         <!-- Escondido, pois está bugado -->
-        <div class="form-group col-md-4" ng-show="false">
+        <div class="form-group col-md-4" ng-if="false">
             <select class="form-control" ng-options="funcionario.name for funcionario in funcionarios" ng-model="selectFuncionario">
                 <option value="" default>Todos</option>
                 <option value="funcionario.name">{{funcionario.name}}</option>
@@ -32,8 +32,7 @@
                 <hr>
                 <p class="card-text">Email: {{funcionario.email}}</p>
                 <p class="card-text">Telefone: {{funcionario.phone}}</p>
-                <p class="card-text">CNPJ do Condomínio: {{funcionario.condominium_cnpj}}</p>
-                <button ng-show="false" ng-click="selecionaFuncionario(funcionario)" data-toggle="modal" data-target="#detalheFuncionario"
+                <button ng-if="false" ng-click="selecionaFuncionario(funcionario)" data-toggle="modal" data-target="#detalheFuncionario"
                     class="btn btn-primary">Ver detalhes</button>
             </div>
         </div>

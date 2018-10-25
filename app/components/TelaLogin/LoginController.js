@@ -1,70 +1,39 @@
 angular.module('condoManager')
 
-.controller('LoginController', function($scope, $rootScope, LoginAdminService, LoginResidentService, LoginStaffService, $localStorage, $location) {
+.controller('LoginController', function($scope, $rootScope, LoginService, VisualizarCondominioService, $localStorage, $location) {
 
-    $scope.loginAdmin = new LoginAdminService();
-    $scope.loginResident = new LoginResidentService();
-    $scope.loginStaff = new LoginStaffService();
+    $scope.login = new LoginService();
 
-    $scope.logar_admin = () => {
-        
-        $scope.loginAdmin.$save()
+    $scope.logar = () => {
+
+        $scope.login.$save()
 
         .then((res) => {
+
             if ($scope.frm.$valid) {
-                $scope.mensagem = { texto: "Logado com sucesso" };
+
+                VisualizarCondominioService.get({ cnpj: res.cnpj },
+
+                    (condominio) => {
+                        res.info_condominio = condominio;
+                    },
+        
+                    (erro) => {
+                        console.log("Não foi possível obter o condomínio");
+                        console.log(erro);
+                    }
+                );
+
                 console.log("Logado com sucesso!");
-                $location.path("/home_adm");
+                $location.path('/home_adm');
                 $localStorage.usuarioLogado = res;
                 $rootScope.usuarioLogado = res;
+
             }
         })
 
         .catch((erro) => {
             alert("Não foi possível fazer login");
-            $scope.mensagem = { texto: "Não foi possível fazer login!" };
-            console.log(erro);
-        });
-    }
-
-    $scope.logar_resident = () => {
-        
-        $scope.loginResident.$save()
-
-        .then((res) => {
-            if ($scope.frm.$valid) {
-                $scope.mensagem = { texto: "Logado com sucesso" };
-                console.log("Logado com sucesso!");
-                $location.path("/home_morador");
-                $localStorage.usuarioLogado = res;
-                $rootScope.usuarioLogado = res;
-            }
-        })
-
-        .catch((erro) => {
-            alert("Não foi possível fazer login");
-            $scope.mensagem = { texto: "Não foi possível fazer login!" };
-            console.log(erro);
-        });
-    }
-
-    $scope.logar_staff = () => {
-        
-        $scope.loginStaff.$save()
-
-        .then((res) => {
-            if ($scope.frm.$valid) {
-                $scope.mensagem = { texto: "Logado com sucesso" };
-                console.log("Logado com sucesso!");
-                $location.path("/home_funcionario");
-                $localStorage.usuarioLogado = res;
-                $rootScope.usuarioLogado = res;
-            }
-        })
-
-        .catch((erro) => {
-            alert("Não foi possível fazer login");
-            $scope.mensagem = { texto: "Não foi possível fazer login!" };
             console.log(erro);
         });
     }
