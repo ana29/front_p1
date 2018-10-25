@@ -6,7 +6,6 @@ angular.module('condoManager')
     $scope.selecionado = null;
 
     let buscaNotificacoes = () => {
-        // query Faz um get no recurso api/staff
         let pesquisa = null;
 
         if ($localStorage.usuarioLogado.condominium_cnpj) {
@@ -15,7 +14,7 @@ angular.module('condoManager')
             pesquisa = $localStorage.usuarioLogado.cnpj;
         }
 
-        VisualizaNotificacoesService.query({cnpj: pesquisa}, (locais) => {
+        VisualizaNotificacoesService.query({cnpj: pesquisa}, (notificacoes) => {
             $scope.notificacoes = notificacoes;
             $scope.mensagem = {};
         },
