@@ -5,7 +5,6 @@ var app = angular.module('condoManager',
      'ngStorage',
      'routeStyles',
      'moment-picker',
-     'ui.utils.masks',
      'ngMask']);
 
 app.constant('env', {

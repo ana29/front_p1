@@ -1,6 +1,6 @@
 angular.module('condoManager')
 
-.controller('AddVisitanteController', function($scope, $rootScope, AddVisitanteService, $localStorage, $location) {
+.controller('AddVisitanteController', function($scope, AddVisitanteService, $localStorage) {
     
     $scope.visitante = new AddVisitanteService();
 

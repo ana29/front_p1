@@ -219,7 +219,7 @@
                             <div class="header-button">
 
                                 <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
+                                    <div class="noti__item js-item-menu" ng-if="false">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>
                                         <div class="mess-dropdown js-dropdown">
@@ -241,27 +241,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="noti__item js-item-menu">
                                         <i class="zmdi zmdi-notifications"></i>
                                         <span class="quantity">3</span>
@@ -288,7 +268,7 @@
                                                 </div>
                                             </div>
                                             <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
+                                                <a href="#!/visualizar_anuncios">All notifications</a>
                                             </div>
                                         </div>
                                     </div>
@@ -363,7 +343,6 @@
     <script src="./vendor/angular-route-styles/route-styles.js"></script>
     <script src="./node_modules/moment/min/moment-with-locales.min.js"></script>
     <script src="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
-    <script src="./node_modules/angular-input-masks/releases/angular-input-masks-standalone.js"></script>
     <script src="./node_modules/ng-mask/dist/ngMask.min.js"></script>
 
     <!-- Dependências do Template -->
@@ -389,10 +368,6 @@
 
     <!-- Services -->
     <script src="./app/components/TelaLogin/LoginService.js"></script>
-    <script src="./app/components/TelaLogin/LoginAdminService.js"></script>
-    <script src="./app/components/TelaLogin/LoginResidentService.js"></script>
-    <script src="./app/components/TelaLogin/LoginStaffService.js"></script>
-    <script src="./app/components/TelaCadastro/CadastroService.js"></script>
     <script src="./app/components/Admin/TelaHome/HomeAdminService.js"></script>
     <script src="./app/components/Admin/TelaAddMorador/AddMoradorService.js"></script>
     <script src="./app/components/Admin/TelaAddServico/AddServicoService.js"></script>
@@ -411,8 +386,8 @@
     <script src="./app/components/TelaListarLocais/ListarLocaisService.js"></script>
     <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioService.js"></script>
     <script src="./app/components/TelaListarVisitantes/ListarVisitantesService.js"></script>
-    <script src="./app/components/TelaCadastro/condominiumService.js"></script>
-    <script src="./app/components/TelaCadastro/userService.js"></script>
+    <script src="./app/components/TelaCadastro/CondominiumService.js"></script>
+    <script src="./app/components/TelaCadastro/UserService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
