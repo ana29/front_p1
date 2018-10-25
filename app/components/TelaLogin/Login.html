@@ -33,16 +33,16 @@
                                 </a>
                             </div>
                             <div class="login-form" novalidate>
-                                <form ng-submit="logar_admin()" name="frm">
+                                <form ng-submit="logar()" name="frm">
                                     <div class="form-group">
                                         <label>E-mail</label>
                                         <input class="au-input au-input--full" id="adm_inputEmail" type="text" name="email"
-                                            placeholder="Email do Administrador" ng-model="loginAdmin.email">
+                                            placeholder="Email do Administrador" ng-model="login.email">
                                     </div>
                                     <div class="form-group">
                                         <label>Senha</label>
                                         <input class="au-input au-input--full" id="adm_inputSenha" type="password" name="password"
-                                            placeholder="Senha" ng-model="loginAdmin.password">
+                                            placeholder="Senha" ng-model="login.password">
                                     </div>
                                     <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">LOGIN</button>
                             </div>
