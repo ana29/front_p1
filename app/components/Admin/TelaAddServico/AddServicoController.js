@@ -2,7 +2,7 @@ angular.module('condoManager')
 
 .controller('AddServicoController', function($scope, AddServicoService, $localStorage) {
 
-    $scope.servico = new AddServicolService();
+    $scope.servico = new AddServicoService();
 
     $scope.servico.cnpj = $localStorage.usuarioLogado.cnpj;
 
@@ -15,6 +15,9 @@ angular.module('condoManager')
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 console.log("Servico adicionado com sucesso!");
             }
+
+            $scope.servico.name = '';
+            $scope.servico.description = '';
         })
 
         .catch((erro) => {

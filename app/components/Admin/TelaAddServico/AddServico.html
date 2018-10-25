@@ -9,23 +9,20 @@
                         <div class="form-group col-md-12">
                             <label for="cc-name" class="control-label mb-1">Nome</label>
                             <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="servico.place_name">
+                                aria-required="true" aria-invalid="false" ng-model="servico.name">
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="cc-name" class="control-label mb-1">Descrição</label>
-                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="servico.about">
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                data-valmsg-replace="true"></span>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <textarea name="textarea-input" id="textarea-input" ng-model="servico.description" rows="5"
+                                placeholder="Descrição do serviço" class="form-control" maxlength="255"></textarea>
                         </div>
                     </div>
 
-  		 <button type="submit" class="btn btn-lg btn-info btn-block">
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
                         <i class="fa fa-plus fa-lg"></i>&nbsp;
                         <span>Adicionar</span>
                     </button>
