@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="./vendor/select2/select2.min.css">
     <link rel="stylesheet" href="./vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.css">
+    <link rel="stylesheet" href="./node_modules/fullcalendar/dist/fullcalendar.css">
 
 </head>
 
@@ -106,6 +107,10 @@
                             <a href="#!/visualizar_locais">
                                 <i class="fas fa-warehouse"></i>Locais</a>
                         </li>
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
+                            <a href="#!/reservar_local">
+                                <i class="fas fa-warehouse"></i>Reservar Local</a>
+                        </li>
                         <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_anuncios">
                                 <i class="fas fa-bullhorn"></i>Anúncios</a>
@@ -184,6 +189,10 @@
                         <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_locais">
                                 <i class="fas fa-warehouse"></i>Locais</a>
+                        </li>
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
+                            <a href="#!/reservar_local">
+                                <i class="fas fa-warehouse"></i>Reservar Local</a>
                         </li>
                         <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_anuncios">
@@ -332,8 +341,10 @@
     <!---------------------------- Sessão de Scripts ---------------------------->
 
     <!-- Dependências NodeJS -->
-    <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/moment/min/moment.min.js"></script>
+    <script src="./node_modules/moment/locale/pt-br.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
     <script src="./node_modules/angular-route/angular-route.min.js"></script>
     <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
     <script src="./node_modules/ngstorage/ngStorage.min.js"></script>
@@ -344,6 +355,9 @@
     <script src="./node_modules/moment/min/moment-with-locales.min.js"></script>
     <script src="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
     <script src="./node_modules/ng-mask/dist/ngMask.min.js"></script>
+    <script src="./node_modules/angular-ui-calendar/src/calendar.js"></script>
+    <script src="./node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="./node_modules/fullcalendar/dist/gcal.js"></script>
 
     <!-- Dependências do Template -->
     <script src="./vendor/jquery-ui.min.js"></script>
@@ -388,6 +402,7 @@
     <script src="./app/components/TelaListarVisitantes/ListarVisitantesService.js"></script>
     <script src="./app/components/TelaCadastro/CondominiumService.js"></script>
     <script src="./app/components/TelaCadastro/UserService.js"></script>
+    <script src="./app/components/Morador/TelaReservarLocal/ReservarLocalService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
@@ -410,6 +425,7 @@
     <script src="./app/components/TelaListarLocais/ListarLocaisController.js"></script>
     <script src="./app/components/Admin/TelaAddAnuncio/AddAnuncioController.js"></script>
     <script src="./app/components/TelaListarVisitantes/ListarVisitantesController.js"></script>
+    <script src="./app/components/Morador/TelaReservarLocal/ReservarLocalController.js"></script>
 
 </body>
 
