@@ -67,12 +67,16 @@
                         <p class="help-block" ng-show="frm.email.$invalid && !frm.email.$pristine ">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-error' : frm.password.$invalid && !frm.password.$pristine }">
+                    <div class="form-group">
                             <label>Senha</label>
                             <input class="form-control" type="password" name="password" ng-model="user.password" ng-minlength="6" ng-maxlength="8" required>
+                            <p class="help-block" ng-show="frm.password.$invalid && frm.password.$dirty ">A senha deve conter de 6 a 8 dígitos.</p>
+                    </div>
+
+                    <div class=form-group>
                             <label>Repita sua senha</label>
-                            <input class="form-control" type="password" name="ctrl_password" placeholder="">
-                            <p class="help-block" ng-show="frm.password.$invalid && !frm.password.$pristine ">Senha deve conter de 6 a 8 digitos.</p>
+                            <input class="form-control" type="password" name="ctrl_password" ng-model="user.ctrl_password" value-matches="user.password" required>
+                            <p class="help-block" ng-show="frm.ctrl_password.$invalid && frm.ctrl_password.$dirty">As senhas não conferem!</p>
                     </div>
 
                     <button class="au-btn au-btn--block au-btn--green m-b-20" ng-disabled="frm.$invalid" type="submit">Finalizar cadastro</button>
