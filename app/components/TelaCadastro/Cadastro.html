@@ -9,65 +9,73 @@
             </div>
 
             <div class="login-form">
-                <form ng-submit="cadastrar()" name="frm">
+                <form name="frm" ng-submit="cadastrar()" novalidate>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.nome.$invalid && !frm.nome.$pristine }">
                         <label>Nome do Condomínio</label>
-                        <input class="au-input au-input--full" type="text" name="nome" ng-model="condominio.name">
+                        <input class="form-control" type="text" name="nome" ng-model="condominio.name" required>
+                        <p class="help-block" ng-show="frm.nome.$invalid && !frm.nome.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.cnpj.$invalid && !frm.cnpj.$pristine }">
                         <label>CNPJ</label>
-                        <input class="au-input au-input--full" type="text" placeholder="" ng-model="condominio.cnpj" mask="99.999.999/9999-99?">
-                    </div>
-                    <div class="form-group">
-                        <label>Endereço do Condomínio</label>
-                        <input class="au-input au-input--full" type="Rua" ng-model="condominio.address">
+                        <input class="form-control" name="cnpj" type="text" placeholder="" ng-model="condominio.cnpj" mask="99.999.999/9999-99?" required>
+                        <p class="help-block" ng-show="frm.cnpj.$invalid && !frm.cnpj.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.endereco.$invalid && !frm.endereco.$pristine }">
+                        <label>Endereço do Condomínio</label>
+                        <input name="endereco" class="form-control" type="Rua" ng-model="condominio.address" required>
+                        <p class="help-block" ng-show="frm.endereco.$invalid && !frm.endereco.$pristine">Campo obrigatório</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : frm.telefone.$invalid && !frm.telefone.$pristine }">
                         <label>Telefone do Condomínio</label>
-                        <input class="au-input au-input--full" type="text" placeholder="(XX) XXXX-XXXX" ng-model="condominio.phone" mask="(99) 9?9999-9999">
+                        <input name="telefone" class="form-control" type="text" placeholder="(XX) XXXX-XXXX" ng-model="condominio.phone" mask="(99) 9?9999-9999">
+                        <p class="help-block" ng-show="frm.telefone.$invalid && !frm.telefone.$pristine">Campo obrigatório</p>
                     </div>
 
                     <hr>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.username.$invalid && !frm.username.$pristine }">
                         <label>Nome do administrador</label>
-                        <input class="au-input au-input--full" type="text" placeholder="" ng-model="user.name">
+                        <input name="username" class="form-control" type="text" placeholder="" ng-model="user.name" required>
+                        <p class="help-block" ng-show="frm.username.$invalid && !frm.username.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.endereco_admin.$invalid && !frm.endereco_admin.$pristine }">
                         <label>Endereço do Administrador</label>
-                        <input class="au-input au-input--full" type="text" ng-model="user.address">
+                        <input name="endereco_admin" class="form-control" type="text" ng-model="user.address" required>
+                        <p class="help-block" ng-show="frm.endereco_admin.$invalid && !frm.endereco_admin.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.cpf.$invalid && !frm.cpf.$pristine }">
                         <label>CPF</label>
-                        <input class="au-input au-input--full" type="text" placeholder="XXX.XXX.XXX-XX" ng-model="user.cpf" mask="999.999.999-99">
+                        <input name="cpf" class="form-control" type="text" placeholder="XXX.XXX.XXX-XX" ng-model="user.cpf" mask="999.999.999-99" required>
+                        <p class="help-block" ng-show="frm.cpf.$invalid && !frm.cpf.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.telefone_sindico.$invalid && !frm.telefone_sindico.$pristine }">
                         <label>Telefone do Síndico</label>
-                        <input class="au-input au-input--full" type="text" placeholder="(XX) XXXX-XXXX" ng-model="user.phone" mask="(99) 9?9999-9999">
+                        <input name="telefone_sindico" class="form-control" type="text" placeholder="(XX) XXXX-XXXX" ng-model="user.phone" mask="(99) 9?9999-9999" required>
+                        <p class="help-block" ng-show="frm.telefone_sindico.$invalid && !frm.telefone_sindico.$pristine ">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.email.$invalid && !frm.email.$pristine }">
                         <label>Email</label>
-                        <input class="au-input au-input--full" type="email" name="email" placeholder="nome@email.com" ng-model="user.email">
+                        <input class="form-control" type="email" name="email" placeholder="nome@email.com" ng-model="user.email" required>
+                        <p class="help-block" ng-show="frm.email.$invalid && !frm.email.$pristine ">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
-                        <label>Senha</label>
-                        <input class="au-input au-input--full" type="password" name="password" ng-model="user.password">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.password.$invalid && !frm.password.$pristine }">
+                            <label>Senha</label>
+                            <input class="form-control" type="password" name="password" ng-model="user.password" ng-minlength="6" ng-maxlength="8" required>
+                            <label>Repita sua senha</label>
+                            <input class="form-control" type="password" name="ctrl_password" placeholder="">
+                            <p class="help-block" ng-show="frm.password.$invalid && !frm.password.$pristine ">Senha deve conter de 6 a 8 digitos.</p>
                     </div>
 
-                    <div class="form-group">
-                        <label>Repita sua senha</label>
-                        <input class="au-input au-input--full" type="password" name="password" placeholder="">
-                    </div>
-
-                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Finalizar cadastro</button>
+                    <button class="au-btn au-btn--block au-btn--green m-b-20" ng-disabled="frm.$invalid" type="submit">Finalizar cadastro</button>
 
                 </form>
 
