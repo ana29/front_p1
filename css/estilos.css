@@ -308,7 +308,7 @@ section {
 }
 
 .main-content {
-    padding-top: 80px;
+    padding-top: 120px;
     min-height: 100vh;
 }
 
@@ -1182,7 +1182,7 @@ section {
     right: 0;
     left: 300px;
     height: 75px;
-    z-index: 3;
+    z-index: 999;
 }
 
 .header-desktop .section__content {

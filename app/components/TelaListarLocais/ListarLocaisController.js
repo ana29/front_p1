@@ -7,15 +7,8 @@ angular.module('condoManager')
 
     let buscaLocais = () => {
         // query Faz um get no recurso api/staff
-        let pesquisa = null;
 
-        if ($localStorage.usuarioLogado.condominium_cnpj) {
-            pesquisa = $localStorage.usuarioLogado.condominium_cnpj;
-        } else {
-            pesquisa = $localStorage.usuarioLogado.cnpj;
-        }
-
-        ListarLocaisService.query({cnpj: pesquisa}, (locais) => {
+        ListarLocaisService.query({cnpj: $localStorage.usuarioLogado.cnpj}, (locais) => {
             $scope.locais = locais;
             $scope.mensagem = {};
         },

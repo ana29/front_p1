@@ -1,15 +1,55 @@
-<div class="container row justify-content-center">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header text-center title-2">Adicionar local para reserva</div>
-            <div class="card-body">
+<div class="container row text-center">
+    <div class="col-lg-12">
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#adicionarLocal">Adicionar local</button>
+    </div>
 
+</div>
+<br><br>
+<div class="row container justify-content-center">
+    <div class="col-lg-6">
+        <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>NOME</th>
+                    <th>AÇÃO</th>
+                </tr>
+
+                <tr ng-repeat="local in locais | filter:filtro">
+                    <td><a href="javascript:void(0)" ng-click="selecionaLocal(local)"  data-toggle="modal" data-target="#detalheLocal">{{local.place_name}}</a></td>
+                    <td>
+                        <button ng-click="selecionaLocal(local)" class="btn btn-primary" data-toggle="modal"
+                            data-target="#adicionarReserva">Adicionar reserva</button>
+                        <button class="btn btn-danger">Remover</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+
+<!-- Modal Adicionar Local -->
+<div class="modal fade" id="adicionarLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">Adicionar local para reserva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
                 <form ng-submit="cadastrarLocal()" name="frm">
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="cc-name" class="control-label mb-1">Nome</label>
-                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="local.place_name">
+                            <label for="place_name" class="control-label mb-1">Nome</label>
+                            <input required name="place_name" type="text" class="form-control cc-name valid" data-val="true"
+                                aria-required="true" aria-invalid="false" ng-model="local.place_name" placeholder="Nome do local">
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
@@ -18,8 +58,45 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="cc-name" class="control-label mb-1">Descrição</label>
-                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="local.about">
+                            <textarea name="textarea-input" id="textarea-input" ng-model="local.about" rows="7"
+                                placeholder="Desrição" class="form-control" maxlength="255"></textarea>
+                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
+                                data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Adicionar Reserva -->
+<div class="modal fade" id="adicionarReserva" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Reserva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="cadastrarReserva()" name="frm">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="place_name" class="control-label mb-1">Local</label>
+                            <input disabled name="place_name" type="text" class="form-control cc-name valid" data-val="true"
+                                ng-model="selecionado.place_name">
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
@@ -27,30 +104,34 @@
 
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="cc-name" class="control-label mb-1">Dias da semana disponíveis</label>
-                            <input required name="cc-name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="local.days_booking">
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                data-valmsg-replace="true"></span>
+
+                            <div locale="pt-br" class="input-group" moment-picker="diaSemana" format="YYYY-MM-DD">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                                <input required class="form-control" placeholder="Data" ng-model="diaSemana"
+                                    ng-model-options="{ updateOn: 'blur' }">
+                            </div>
+
                         </div>
                     </div>
 
                     <div class="form-group has-success">
-                        <div locale="pt-br" class="input-group" moment-picker="local.start_time" format="HH:mm">
+                        <div locale="pt-br" class="input-group" moment-picker="horaInicio" format="HH:mm">
                             <span class="input-group-addon">
                                 <i class="fas fa-clock"></i>
                             </span>
-                            <input required class="form-control" placeholder="Hora inicial" ng-model="local.start_time"
+                            <input required class="form-control" placeholder="Hora inicial" ng-model="horaInicio"
                                 ng-model-options="{ updateOn: 'blur' }">
                         </div>
                     </div>
 
                     <div class="form-group has-success">
-                        <div locale="pt-br" class="input-group" moment-picker="local.end_time" format="HH:mm">
+                        <div locale="pt-br" class="input-group" moment-picker="horaFinal" format="HH:mm">
                             <span class="input-group-addon">
                                 <i class="fas fa-clock"></i>
                             </span>
-                            <input required class="form-control" placeholder="Hora final" ng-model="local.end_time"
+                            <input required class="form-control" placeholder="Hora final" ng-model="horaFinal"
                                 ng-model-options="{ updateOn: 'blur' }">
                         </div>
                     </div>
@@ -60,6 +141,33 @@
                         <span>Adicionar</span>
                     </button>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes do Local -->
+<div class="modal fade" id="detalheLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{selecionado.place_name}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Dias disponível: </b></p> {{selecionado.days_booking}} ({{selecionado.start_time}} - {{selecionado.end_time}})
+                <p><b>Descrição:</b>
+                <p>{{selecionado.about}}</p>
+                <p ng-if="selecionado.about==null"><i>Sem descrição</i></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

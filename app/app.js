@@ -3,15 +3,16 @@ var app = angular.module('condoManager',
      'ngResource',
      'ngMessages',
      'ngStorage',
+     'ngAnimate',
      'routeStyles',
      'moment-picker',
      'ngMask',
-     'ui.calendar']);
+     'ui.rCalendar']);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
     BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
-})
+});
 
 app.config(($routeProvider) => {
     $routeProvider
@@ -209,9 +210,9 @@ app.config(($routeProvider) => {
     .when('/reservar_local', {
         templateUrl: 'app/components/Morador/TelaReservarLocal/ReservarLocal.html',
         css: [
-            'app/components/Morador/TelaReservarLocal/ReservarLocal.html'
+            'app/components/Morador/TelaReservarLocal/ReservarLocal.css'
         ],
-        controller: 'ReservarLocalController',
+        controller: 'ReservarLocalController as vm',
         title: 'Condo Manager - Reservar Local'
     })
         

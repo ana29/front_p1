@@ -27,11 +27,13 @@
     <link rel="stylesheet" href="./vendor/select2/select2.min.css">
     <link rel="stylesheet" href="./vendor/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.css">
-    <link rel="stylesheet" href="./node_modules/fullcalendar/dist/fullcalendar.css">
+
+    <!-- Calendario -->
+    <link rel="stylesheet" href="./vendor/ng-responsive-calendar/dist/css/calendar.min.css">
 
 </head>
 
-<body class="animsition" style="animation-duration: 500ms; opacity: 1;" ng-controller="PageController" ng-cloak>
+<body ng-controller="PageController" ng-cloak>
 
     <div class="page-wrapper">
 
@@ -355,10 +357,9 @@
     <script src="./node_modules/moment/min/moment-with-locales.min.js"></script>
     <script src="./node_modules/angular-moment-picker/dist/angular-moment-picker.min.js"></script>
     <script src="./node_modules/ng-mask/dist/ngMask.min.js"></script>
-    <script src="./node_modules/angular-ui-calendar/src/calendar.js"></script>
-    <script src="./node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
-    <script src="./node_modules/fullcalendar/dist/gcal.js"></script>
-
+    <script src="./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="./node_modules/angular-bootstrap-calendar/dist/js/angular-bootstrap-calendar-tpls.min.js"></script>
+    
     <!-- Dependências do Template -->
     <script src="./vendor/jquery-ui.min.js"></script>
     <script src="./vendor/popper/popper.min.js"></script>
@@ -375,10 +376,12 @@
     <script src="./vendor/select2/select2.min.js"></script>
     <script src="./vendor/smk-accordion/accordion.min.js"></script>
     <script src="./vendor/util.js"></script>
+    <script src="./vendor/ng-responsive-calendar/dist/js/calendar-tpls.min.js"></script>
 
     <!-- Módulo Principal -->
     <script src="./app/app.js"></script>
     <script src="./app/partials/partials.js"></script>
+    <script src="./app/components/Morador/TelaReservarLocal/helpers.js"></script>
 
     <!-- Services -->
     <script src="./app/components/TelaLogin/LoginService.js"></script>
@@ -403,6 +406,7 @@
     <script src="./app/components/TelaCadastro/CondominiumService.js"></script>
     <script src="./app/components/TelaCadastro/UserService.js"></script>
     <script src="./app/components/Morador/TelaReservarLocal/ReservarLocalService.js"></script>
+    <script src="./app/components/Admin/TelaAddLocal/AddReservaService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>
