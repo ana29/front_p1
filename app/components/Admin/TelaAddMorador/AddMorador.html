@@ -1,49 +1,50 @@
 <div class="container row justify-content-center">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header text-center title-2">Adicionar novo morador</div>
+            <div class="card-header text-center title-2">Novo Morador</div>
             <div class="card-body">
 
-                <form ng-submit="cadastrar()" name="frm">
+                <form ng-submit="cadastrar()" name="frm" novalidate>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12" ng-class="{ 'has-error' : frm.nome_morador.$invalid && !frm.nome_morador.$pristine }">
                             <label for="cc-name" class="control-label mb-1">Nome</label>
-                            <input type="text" class="form-control cc-name valid" ng-model="user.name">
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                data-valmsg-replace="true"></span>
+                            <input name="nome_morador" type="text" class="form-control" ng-model="user.name" required>
+                            <p class="help-block" ng-show="frm.nome_morador.$invalid && !frm.nome_morador.$pristine">Campo obrigatório</p>
                         </div>
                     </div>
 
-                    <div class="form-group has-success">
-                        <label for="cc-endereco" class="control-label mb-1">Endereço</label>
-                        <input type="text" class="form-control cc-name valid" ng-model="user.address">
-                        <span class="help-block field-validation-valid" data-valmsg-for="cc-endereco"
-                            data-valmsg-replace="true"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="cc-number" class="control-label mb-1">CPF</label>
-                        <input type="text" class="form-control cc-number" placeholder="XXX.XXX.XXX-XX" ng-model="user.cpf" mask="999.999.999-99">
-                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                    <div class="form-group" ng-class="{ 'has-error' : frm.endereco.$invalid && !frm.endereco.$pristine }">
+                        <label for="endereco" class="control-label mb-1">Endereço</label>
+                        <input name="endereco" type="text" class="form-control" ng-model="user.address" required>
+                        <p class="help-block" ng-show="frm.endereco.$invalid && !frm.endereco.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
-                        <label for="email-input" class=" form-control-label">Email</label>
-                        <input type="email" id="email-input" placeholder="email@mail.com" class="form-control" ng-model="user.email">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.cpf.$invalid && !frm.cpf.$pristine }">
+                        <label for="cpf" class="control-label mb-1">CPF</label>
+                        <input name="cpf" type="text" class="form-control cc-number" placeholder="XXX.XXX.XXX-XX" ng-model="user.cpf" mask="999.999.999-99" required>
+                        <p class="help-block" ng-show="frm.cpf.$invalid && !frm.cpf.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.email.$invalid && !frm.email.$pristine }">
+                        <label for="email" class=" form-control-label">Email</label>
+                        <input name="email" type="email" placeholder="email@mail.com" class="form-control" ng-model="user.email" required>
+                        <p class="help-block" ng-show="frm.email.$invalid && !frm.email.$pristine">Campo obrigatório</p>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : frm.telefone.$invalid && !frm.telefone.$pristine }">
                         <label for="cc-number" class="control-label mb-1">Telefone</label>
-                        <input type="text" class="form-control cc-number" placeholder="(XX) X XXXX-XXXX" ng-model="user.phone" mask="(99) 9?9999-9999">
-                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                        <input name="telefone" type="text" class="form-control" placeholder="(XX) XXXXX-XXXX" ng-model="user.phone" mask="(99) 9?9999-9999" required>
+                        <p class="help-block" ng-show="frm.telefone.$invalid && !frm.telefone.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{ 'has-error' : frm.senha.$invalid && !frm.senha.$pristine }">
                         <label for="cc-number" class="control-label mb-1">Senha</label>
-                        <input type="password" class="form-control" ng-model="user.password">
-                        <span class="help-block" data-valmsg-for="cc-number" data-valmsg-replace="true"></span>
+                        <input name="senha" type="password" class="form-control cc-number" ng-model="user.password" ng-minlength="6" ng-maxlength="8" required>
+                        <p class="help-block" ng-show="frm.senha.$error.minlength || frm.senha.$error.maxlength">Senha deve conter entre 6 e 8 dígitos.</p>
+                        <p class="help-block" ng-show="frm.senha.$invalid && !frm.senha.$pristine">Campo obrigatório</p>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                    <button type="submit" class="btn btn-lg btn-info btn-block" ng-disabled="frm.$invalid" >
                         <i class="fa fa-plus fa-lg"></i>&nbsp;
                         <span>Adicionar</span>
                     </button>
@@ -51,4 +52,5 @@
             </form>
         </div>
     </div>
+</div>
 </div>
