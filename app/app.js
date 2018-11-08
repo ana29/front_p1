@@ -3,14 +3,17 @@ var app = angular.module('condoManager',
      'ngResource',
      'ngMessages',
      'ngStorage',
+     'ngAnimate',
      'routeStyles',
      'moment-picker',
-     'ngMask']);
+     'ngMask',
+     'ui.rCalendar']);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
-    BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
-})
+    //BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
+    BASE_API_REMOTE: 'http://localhost:3000'
+});
 
 app.config(($routeProvider) => {
     $routeProvider
@@ -204,6 +207,15 @@ app.config(($routeProvider) => {
         controller: 'ListarLocaisController',
         title: 'Condo Manager - Locais'
     })
+
+    .when('/reservar_local', {
+        templateUrl: 'app/components/Morador/TelaReservarLocal/ReservarLocal.html',
+        css: [
+            'app/components/Morador/TelaReservarLocal/ReservarLocal.css'
+        ],
+        controller: 'ReservarLocalController as vm',
+        title: 'Condo Manager - Reservar Local'
+    })
         
     .otherwise({
         redirectTo: '/login'
@@ -230,14 +242,16 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/visualizar_funcionarios',
         '/adicionar_local',
         '/adicionar_anuncio',
-	    '/adicionar_servico'
+        '/adicionar_servico',
+        '/reservar_local'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
         '/cadastro',
         '/home_morador',
         '/home_funcionario',
-        '/adicionar_visitante'
+        '/adicionar_visitante',
+        '/reservar_local'
     ];
     let rotasBloqueadasMorador = [
         '/login',
@@ -267,7 +281,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/visualizar_funcionarios',
         '/adicionar_local',
         '/adicionar_anuncio',
-	    '/adicionar_servico'
+        '/adicionar_servico',
+        '/reservar_local'
     ];
 
     $rootScope.$on('$locationChangeStart', function() {
