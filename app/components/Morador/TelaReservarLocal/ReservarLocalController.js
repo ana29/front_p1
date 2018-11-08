@@ -1,10 +1,11 @@
 angular.module('condoManager')
 
-.controller('ReservarLocalController', function($scope, $localStorage) {
+.controller('ReservarLocalController', function($scope, $localStorage, GetReservasService, ListarLocaisService, ListarMoradoresService, ReservarLocalService) {
     
-  $scope.changeMode = function (mode) {
+$scope.changeMode = function (mode) {
     $scope.mode = mode;
 };
+
 $scope.today = function () {
   $scope.currentDate = new Date();
 };
@@ -18,71 +19,86 @@ $scope.isToday = function () {
   return today.getTime() === currentCalendarDate.getTime();
 };
 
-$scope.loadEvents = function () {
-  $scope.eventSource = createRandomEvents();
-};
-
 $scope.onEventSelected = function (event) {
+  $('#detalheReserva').modal('show');
   $scope.event = event;
 };
 $scope.onTimeSelected = function (selectedTime, events) {
   console.log('Selected time: ' + selectedTime + ' hasEvents: ' + (events !== undefined && events.length !== 0));
 };
 
+$scope.reservarLocal = new ReservarLocalService();
 
-var eventos2 = [
-  {
-    allDay: false,
-    endTime: new Date("Tue Nov 13 2018 10:26:00 GMT-0300"),
-    startTime: new Date("Tue Nov 13 2018 07:42:00 GMT-0300"),
-    title: "Event - 0"
-  }
-]
+$scope.realizaReserva = (reservaId) => {
 
-function createRandomEvents() {
-  var events = [];
-/*
-  for (var i = 0; i < 10; i += 1) {
-      var date = new Date();
-      var eventType = Math.floor(Math.random() * 2);
-      var startDay = Math.floor(Math.random() * 90) - 45;
-      var endDay = Math.floor(Math.random() * 2) + startDay;
-      var startTime;
-      var endTime;
-      if (eventType === 0) {
-          startTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + startDay));
-          if (endDay === startDay) {
-              endDay += 1;
-          }
-          endTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + endDay));
-          events.push({
-              title: 'All Day - ' + i,
-              startTime: startTime,
-              endTime: endTime,
-              allDay: true
-          });
-      } else {
-          var startMinute = Math.floor(Math.random() * 24 * 60);
-          var endMinute = Math.floor(Math.random() * 180) + startMinute;
-          startTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + startDay, 0, date.getMinutes() + startMinute);
-          endTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + endDay, 0, date.getMinutes() + endMinute);
-          
-          events.push({
-              title: 'Event - ' + i,
-              startTime: startTime,
-              endTime: endTime,
-              allDay: false
-          });
+  ReservarLocalService.update({
+    id: reservaId,
+    residentId: $localStorage.usuarioLogado.id,
+    occupied: true
+  }, function() {
+    console.log("OK");
+    $scope.carregaReservas();
+  }, function(erro) {
+    console.log("Erro ao realizar reserva", erro);
+  });
 
-      }
-  }
-*/
-  events = eventos2;
-  console.log(events);
-  console.log(eventos2);
-  return events;
+
+};
+
+$scope.cancelaReserva = (reservaId) => {
+
+  ReservarLocalService.update({
+    id: reservaId,
+    residentId: -1,
+    occupied: false
+  }, function() {
+    console.log("OK");
+    $scope.carregaReservas();
+  }, function(erro) {
+    console.log("Erro ao cancelar reserva", erro);
+  });
+
 }
 
+$scope.carregaReservas = () => {
+  let todasReservas = [];
+  let todosLocais = [];
+  let eventos = [];
+  let residents = [];
 
+  GetReservasService.query({cnpj: $localStorage.usuarioLogado.cnpj}, (reservas) => {
+    
+    todasReservas = reservas;
+
+    ListarLocaisService.query({cnpj: $localStorage.usuarioLogado.cnpj}, (locais) => {
+      todosLocais = locais;
+
+      ListarMoradoresService.query({cnpj: $localStorage.usuarioLogado.cnpj},(moradores) => {
+        residents = moradores;
+
+        todasReservas.forEach(reserva => {
+          eventos.push({
+            title: todosLocais.filter(obj => { return obj.id == reserva.placeId })[0].place_name,
+            placeId: todosLocais.filter(obj => { return obj.id == reserva.placeId })[0].id,
+            startTime: reserva.startTime,
+            endTime: reserva.endTime,
+            allDay: false,
+            owner: (reserva.residentId>0) ? residents.filter(obj => { return obj.id == reserva.residentId})[0].name : null,
+            ownerId: (reserva.residentId>0) ? reserva.residentId : null,
+            reservationId: reserva.id,
+            occupied: reserva.occupied,
+            description: todosLocais.filter(obj => { return obj.id == reserva.placeId })[0].about
+          })
+        });
+  
+        $scope.eventSource = eventos;
+
+      });
+
+    });
+    
+  });
+
+};
 
 });

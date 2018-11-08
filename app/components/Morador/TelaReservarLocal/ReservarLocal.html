@@ -1,11 +1,8 @@
-<!--<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.0.3/css/bootstrap.min.css"/>-->
+<!--<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.0.3/css/bootstrap.min.css" />-->
 
-<section class="content" style="margin-top: 70px; ">
+<section class="content" style="margin-top: 10px; ">
         <section class="container" style="max-width:900px !important;">
-                <section ng-init="loadEvents()">
-                        <div class="alert alert-success" ng-show="event">Evento selecionado:{{event.startTime|date:
-                                'dd/MMM,yyyy,HH:mm'}} - {{event.endTime|date:'dd/MMM,yyyy,HH:mm'}}, {{event.title}}
-                        </div>
+                <section ng-init="carregaReservas()">
 
                         <div class="btn-toolbar">
                                 <div class="btn-group">
@@ -17,7 +14,7 @@
                                                 ng-click="changeMode('week')">
                                                 Semana
                                         </button>
-                                        <button type="button" class="btn btn-default" ng-class="{active:mode==='day'}"
+                                        <button ng-hide="true" type="button" class="btn btn-default" ng-class="{active:mode==='day'}"
                                                 ng-click="changeMode('day')">
                                                 Dia
                                         </button>
@@ -36,3 +33,34 @@
                 </section>
         </section>
 </section>
+
+<!-- Modal com Detalhes do Serviço -->
+<div class="modal fade" id="detalheReserva" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{event.title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Horário: </b></p>
+                <p>
+                                {{event.startTime | date:'dd/MMM/yyyy'}} 
+                                ({{event.startTime | date: 'HH:mm'}} - {{event.endTime | date:'HH:mm'}})
+                </p>
+                <p ng-if="event.owner">Dono da reserva: {{event.owner}}</p><br>
+                <p><b>Descrição:</b>
+                <p>{{event.description}}</p>
+                <p ng-if="!event.description"><i>Sem descrição</i></p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="realizaReserva(event.reservationId)" ng-if="!event.ownerId" type="button" class="btn btn-success" data-dismiss="modal">Reservar</button>
+                <button ng-click="cancelaReserva(event.reservationId)" ng-if="event.ownerId === $root.usuarioLogado.id" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar Reserva</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

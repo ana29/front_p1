@@ -1,10 +1,11 @@
 angular.module("ui.rCalendar.tpls", ["template/rcalendar/calendar.html","template/rcalendar/day.html","template/rcalendar/month.html","template/rcalendar/week.html"]);
 angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
     .constant('calendarConfig', {
+        lang: 'pt-br',
         formatDay: 'dd',
-        formatDayHeader: 'EEE',
+        formatDayHeader: 'EEEE',
         formatDayTitle: 'MMMM dd, yyyy',
-        formatWeekTitle: 'MMMM yyyy, Week w',
+        formatWeekTitle: 'MMMM yyyy, #w',
         formatMonthTitle: 'MMMM yyyy',
         formatWeekViewDayHeader: 'EEE d',
         formatHourColumn: 'ha',
@@ -12,8 +13,8 @@ angular.module('ui.rCalendar', ['ui.rCalendar.tpls'])
         showWeeks: false,
         showEventDetail: true,
         startingDay: 0,
-        allDayLabel: 'all day',
-        noEventsLabel: 'No Events',
+        allDayLabel: '',
+        noEventsLabel: 'Sem reservas',
         eventSource: null,
         queryMode: 'local',
         step: 60
@@ -1201,13 +1202,15 @@ angular.module("template/rcalendar/month.html", []).run(["$templateCache", funct
     "    <div ng-if=\"showEventDetail\" class=\"event-detail-container\">\n" +
     "        <div class=\"scrollable\" style=\"height: 200px\">\n" +
     "            <table class=\"table table-bordered table-striped table-fixed\">\n" +
-    "                <tr ng-repeat=\"event in selectedDate.events\" ng-if=\"selectedDate.events\">\n" +
+    "                <tr ng-repeat=\"event in selectedDate.events\" ng-if=\"selectedDate.events\" data-target='#realizaReserva' data-toggle='modal'>\n" +
     "                    <td ng-if=\"!event.allDay\" class=\"monthview-eventdetail-timecolumn\">{{event.startTime|date: 'HH:mm'}}\n" +
     "                        -\n" +
     "                        {{event.endTime|date: 'HH:mm'}}\n" +
     "                    </td>\n" +
     "                    <td ng-if=\"event.allDay\" class=\"monthview-eventdetail-timecolumn\">{{allDayLabel}}</td>\n" +
-    "                    <td class=\"event-detail\" ng-click=\"eventSelected({event:event})\">{{event.title}}</td>\n" +
+    "                    <td class=\"event-detail\" ng-click=\"eventSelected({event:event})\">\n" + 
+    "                           {{event.title}} <span ng-if='event.occupied'> - Ocupado</span><span ng-if='!event.occupied'> - Livre</span>\n" + 
+    "                           <span ng-if='event.owner'> - ({{event.owner}})</span>    </td>\n" +
     "                </tr>\n" +
     "                <tr ng-if=\"!selectedDate.events\"><td class=\"no-event-label\">{{noEventsLabel}}</td></tr>\n" +
     "            </table>\n" +
