@@ -49,7 +49,7 @@
                         <div class="form-group col-md-12">
                             <label for="place_name" class="control-label mb-1">Nome</label>
                             <input required name="place_name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="local.place_name" placeholder="Nome do local">
+                                aria-required="true" aria-invalid="false" ng-model="local.place_name" placeholder="Nome do local" required>
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
@@ -96,7 +96,7 @@
                         <div class="form-group col-md-12">
                             <label for="place_name" class="control-label mb-1">Local</label>
                             <input disabled name="place_name" type="text" class="form-control cc-name valid" data-val="true"
-                                ng-model="localSelecionado.place_name">
+                                ng-model="localSelecionado.place_name" required>
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
@@ -122,7 +122,7 @@
                                 <i class="fas fa-clock"></i>
                             </span>
                             <input required class="form-control" placeholder="Hora inicial" ng-model="horaInicio"
-                                ng-model-options="{ updateOn: 'blur' }">
+                                ng-model-options="{ updateOn: 'blur' }" required>
                         </div>
                     </div>
 
@@ -132,7 +132,7 @@
                                 <i class="fas fa-clock"></i>
                             </span>
                             <input required class="form-control" placeholder="Hora final" ng-model="horaFinal"
-                                ng-model-options="{ updateOn: 'blur' }">
+                                ng-model-options="{ updateOn: 'blur' }" required>
                         </div>
                     </div>
 
@@ -160,8 +160,6 @@
                 </button>
             </div>
             <div class="modal-body">
-
-
 
                 <div>
                     <p><b>Descrição: </b></p>
