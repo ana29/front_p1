@@ -7,12 +7,14 @@ var app = angular.module('condoManager',
      'routeStyles',
      'moment-picker',
      'ngMask',
-     'ui.rCalendar']);
+     'ui.rCalendar',
+     'checklist-model',
+     'ui.bootstrap']);
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
-    BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
-    //BASE_API_REMOTE: 'http://localhost:3000'
+    //BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
+    BASE_API_REMOTE: 'http://localhost:3000'
 });
 
 app.config(($routeProvider) => {

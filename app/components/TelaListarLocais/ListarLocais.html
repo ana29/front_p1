@@ -1,5 +1,5 @@
 <div class="container">
-
+    {{teste}}
     <div class="text-center title-1">Locais</div><br>
 
     <div class="row">
@@ -19,15 +19,12 @@
     <br>
 
     <div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
-        <div align="center" ng-repeat="local in filtro =(locais | filter: filtroNome)"
-            class="card" style="width: 15rem; margin: 3px">
+        <div align="center" ng-repeat="local in filtro =(locais | filter: filtroNome)" class="card" style="width: 15rem; margin: 3px">
             <div class="card-body">
-                <h5 class="card-title">Local</h5>
+                <h5 class="card-title">{{local.place_name}}</h5>
                 <hr>
-                <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{local.place_name}}</p>
-                <br>
-                <button ng-click="selecionaLocal(local)" data-toggle="modal" data-target="#detalheLocal"
-                    class="btn btn-primary">Ver mais</button>
+                <button ng-click="selecionaLocal(local)" data-toggle="modal" data-target="#detalheLocal" class="btn btn-sm btn-primary">Ver
+                    mais</button>
             </div>
         </div>
     </div>
@@ -35,24 +32,164 @@
 </div>
 
 <!-- Modal com Detalhes do Serviço -->
-<div class="modal fade" id="detalheLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
-    aria-hidden="true">
+<div class="modal fade" id="detalheLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header list-group-item-default">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{selecionado.place_name}}</h5>
+                <h3 class="modal-title" id="exampleModalLongTitle">{{localSelecionado.place_name}}</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p><b>Dias disponível: </b></p> {{selecionado.days_booking}} ({{selecionado.start_time}} - {{selecionado.end_time}})
-                <p><b>Descrição:</b>
-                <p>{{selecionado.about}}</p>
-                <p ng-if="selecionado.about==null"><i>Sem descrição</i></p>
+                <div style="display: flex; flex-wrap: wrap">
+                    <span ng-repeat="horario in localSelecionado.about">
+                        <button ng-click="selecionarHorario(ts(horario))" data-toggle="modal" data-target="#adicionarReserva"
+                            class="btn btn-sm btn-info" style="margin:5px" ng-click="console.log(horario)">
+                            {{ts(horario).dia}} - {{ts(horario).startTime | date:'HH:mm'}} às {{ts(horario).endTime
+                            | date: 'HH:mm'}}
+                        </button>
+                    </span>
+                </div>
+                <hr>
+                <div>
+                    <h5>Minhas Reservas</h5>
+                    <br>
+                    <div class="alert alert-info" ng-show="reservas.filter(filtroID, usuarioLogado.id).length == 0"
+                        role="alert">
+                        Você não possui reservas para este local!
+                    </div>
+
+                    <div ng-show="reservas.filter(filtroID, usuarioLogado.id).length" style="max-height:300px; overflow-x:auto;">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Data</th>
+                                    <th>Excluir</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="reserva in reservas.filter(filtroID, usuarioLogado.id) | orderBy:'startTime'"
+                                    class="text-center">
+                                    <td>{{reserva.startTime | date:'fullDate'}}<br>
+                                        <strong>{{reserva.startTime | date: 'HH:mm'}} - {{reserva.endTime |
+                                            date:'HH:mm'}}</strong>
+
+                                    </td>
+                                    <td><button ng-click="selecionaReserva(reserva)" data-toggle="modal" data-target="#removeReserva"
+                                            class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal Adicionar Reserva -->
+<div class="modal fade" id="adicionarReserva" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h4 class="modal-title" id="exampleModalLongTitle">Adicionar Reserva ({{horarioSelecionado.dia}})</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form ng-submit="cadastrarReserva()" name="frm">
+                    <div class="alert alert-info">Selecione uma data disponível</div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-calendar"></i>
+                                </span>
+                                <input placeholder="Escolher data" style="cursor:pointer" ng-click="open1()" type="text"
+                                    class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="popup1.opened"
+                                    datepicker-options="dateOptions" ng-required="true" show-button-bar="false"
+                                    alt-input-formats="altInputFormats" />
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fas fa-warehouse"></i>
+                                </span>
+                                <input disabled name="place_name" type="text" class="form-control" data-val="true"
+                                    ng-model="localSelecionado.place_name">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group has-success">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input disabled class="form-control" placeholder="Hora inicial" ng-model="horarioSelecionado.startTime">
+                        </div>
+                    </div>
+
+                    <div class="form-group has-success">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fas fa-clock"></i>
+                            </span>
+                            <input disabled class="form-control" placeholder="Hora final" ng-model="horarioSelecionado.endTime">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes da remoção de reserva -->
+<div class="modal fade" id="removeReserva" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ffdee1">
+            <div class="modal-header list-group-item-default modal-header-danger" style="background-color:#bd2130">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white">Remover reserva</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Deseja cancelar a reserva?</h3>
+                <p>
+                    {{reservaSelecionada.startTime | date:'fullDate'}}<br>
+                    <strong>{{reservaSelecionada.startTime | date: 'HH:mm'}} - {{reservaSelecionada.endTime |
+                        date:'HH:mm'}}</strong>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeReserva(reservaSelecionada.id)" type="button" class="btn btn-danger">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
             </div>
         </div>
     </div>
