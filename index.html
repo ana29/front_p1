@@ -71,7 +71,7 @@
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_atendimento">
                                 <i class="fas fa-clock"></i>Horário de Atendimento</a>
                         </li>
@@ -101,7 +101,7 @@
                             <a href="#!/visualizar_visitantes">
                                 <i class="fas fa-users"></i>Visualizar Visitantes</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/horarios_atendimento">
                                 <i class="fas fa-clock"></i>Horários de Atendimento</a>
                         </li>
@@ -156,7 +156,7 @@
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_atendimento">
                                 <i class="fas fa-clock"></i>Horário de Atendimento</a>
                         </li>
@@ -188,7 +188,7 @@
                             <a href="#!/horarios_atendimento"> <!-- DESATIVADO -->
                                 <i class="fas fa-clock"></i>Horários de Atendimento</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT'">
                             <a href="#!/visualizar_locais">
                                 <i class="fas fa-warehouse"></i>Locais</a>
                         </li>
@@ -229,7 +229,7 @@
                             </form>
                             <div class="header-button">
 
-                                <div class="noti-wrap">
+                                <div ng-hide="true" class="noti-wrap">
                                     <div class="noti__item js-item-menu" ng-if="false">
                                         <i class="zmdi zmdi-comment-more"></i>
                                         <span class="quantity">1</span>

@@ -245,7 +245,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/adicionar_local',
         '/adicionar_anuncio',
         '/adicionar_servico',
-        '/reservar_local'
+        '/reservar_local',
+        '/visualizar_locais'
     ];
     let rotasBloqueadasAdmin = [
         '/login',
@@ -253,7 +254,8 @@ app.run(function($rootScope, $route, $localStorage, $location) {
         '/home_morador',
         '/home_funcionario',
         '/adicionar_visitante',
-        '/reservar_local'
+        '/reservar_local',
+        '/visualizar_locais'
     ];
     let rotasBloqueadasMorador = [
         '/login',

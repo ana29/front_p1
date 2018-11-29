@@ -9,14 +9,18 @@
                 <th>NOME</th>
                 <th>CPF</th>
                 <th>EMAIL</th>
-                <th>CNPJ CONDOMÍNIO</th>
+                <th></th>
             </tr>
 
             <tr ng-repeat="morador in moradores | filter:filtro" style="cursor:default">
                 <td>{{morador.name}}</td>
                 <td>{{ morador.cpf }}</td>
                 <td>{{ morador.email }}</td>
-                <td>{{ morador.cnpj }}</td>
+                <td>
+                    <button ng-click="selecionaMorador(morador)">
+
+                    </button>
+                </td>
             </tr>
         </table>
     </div>

@@ -146,7 +146,12 @@ angular.module('condoManager')
             });
     };
 
+    $scope.selecionaLocal2 = (local) => {
+        $scope.localSelecionado = local;
+    }
+
     $scope.removeLocal = (localID) => {
+        $('#removeLocal').modal('hide');
         DelLocalService.delete({ id: localID }, () => {
             buscaLocais();
         },
