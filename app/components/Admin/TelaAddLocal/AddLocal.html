@@ -21,7 +21,7 @@
                     <td>
                         <button ng-click="selecionaLocal(local)" class="btn btn-primary" data-toggle="modal"
                             data-target="#adicionarReserva">Adicionar reserva</button>
-                        <button class="btn btn-danger">Remover</button>
+                        <button ng-click="selecionaLocal2(local)" class="btn btn-danger" data-toggle="modal" data-target="#removeLocal">Remover</button>
                     </td>
                 </tr>
             </table>
@@ -49,7 +49,8 @@
                         <div class="form-group col-md-12">
                             <label for="place_name" class="control-label mb-1">Nome</label>
                             <input required name="place_name" type="text" class="form-control cc-name valid" data-val="true"
-                                aria-required="true" aria-invalid="false" ng-model="local.place_name" placeholder="Nome do local" required>
+                                aria-required="true" aria-invalid="false" ng-model="local.place_name" placeholder="Nome do local"
+                                required>
                             <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
                                 data-valmsg-replace="true"></span>
                         </div>
@@ -57,11 +58,42 @@
 
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="cc-name" class="control-label mb-1">Descrição</label>
-                            <textarea name="textarea-input" id="textarea-input" ng-model="local.about" rows="7"
-                                placeholder="Desrição" class="form-control" maxlength="255"></textarea>
-                            <span class="help-block field-validation-valid" data-valmsg-for="cc-name"
-                                data-valmsg-replace="true"></span>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="horario.dia">
+                                        <option value="Domingo">Domingo</option>
+                                        <option value="Segunda-feira">Segunda-feira</option>
+                                        <option value="Terça-feira">Terça-feira</option>
+                                        <option value="Quarta-feira">Quarta-feira</option>
+                                        <option value="Quinta-feira">Quinta-feira</option>
+                                        <option value="Sexta-feira">Sexta-feira</option>
+                                        <option value="Sábado">Sábado</option>
+                                    </select><br>
+                                </div>
+                                <div class="col-md-7">
+                                    <small for="domStart">Início: </small>
+                                    <input id="domStart" type="time" ng-model="horario.startTime" placeholder="HH:mm"
+                                        min="07:00" max="22:00" required />
+                                    <small for="domEnd">Fim: </small>
+                                    <input id="domEnd" type="time" ng-model="horario.endTime" placeholder="HH:mm" min="07:00"
+                                        max="22:00" required />
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-sm btn-success" ng-click="addHorario()"><i
+                                            class="fa fa-plus"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <ul>
+                                    <li ng-repeat="horario in horariosLocal">
+                                        {{horario.dia}} - {{horario.startTime | date:'HH:mm'}} às {{horario.endTime |
+                                        date:'HH:mm'}}
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
 
@@ -162,8 +194,26 @@
             <div class="modal-body">
 
                 <div>
-                    <p><b>Descrição: </b></p>
-                    <p>{{localSelecionado.about}}</p>
+                    <p><b>Dias disponível: </b></p>
+
+                    <div style="max-height:300px; overflow-x:auto;">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>Dia</th>
+                                    <th>Horário</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-center" ng-repeat="horario in localSelecionado.about">
+                                    <td>{{ts(horario).dia}}</td>
+                                    <td>{{ts(horario).startTime | date:'HH:mm'}} às {{ts(horario).endTime
+                                        | date: 'HH:mm'}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
                     <br>
                     <p><b>Reservas cadastradas:</b></p>
 
@@ -225,6 +275,30 @@
             </div>
             <div class="modal-footer">
                 <button ng-click="removeReserva(reservaSelecionada.id)" type="button" class="btn btn-danger">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes da remoção de reserva -->
+<div class="modal fade" id="removeLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ffdee1">
+            <div class="modal-header list-group-item-default modal-header-danger" style="background-color:#bd2130">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white">Remover local</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Deseja remover o local?</h3>
+                <p>
+                    {{localSelecionado.place_name}}<br>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeLocal(localSelecionado.id)" type="button" class="btn btn-danger">Sim</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
             </div>
         </div>

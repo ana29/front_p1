@@ -1,1 +1,31 @@
-<h1>Listar Visitantes</h1>
+<div class="container">
+
+    <div ng-if="$root.usuarioLogado.role=='ADMIN'" class="form-group" ng-class="{ 'has-error' : frm.cpf.$invalid && !frm.cpf.$pristine }">
+        <label>Digite o CPF do morador</label>
+        <input name="cpf" class="form-control" type="text" placeholder="XXX.XXX.XXX-XX" ng-model="cpf"
+            mask="999.999.999-99" required>
+        <p class="help-block" ng-show="frm.cpf.$invalid && !frm.cpf.$pristine"></p>
+        <button class="btn btn-primary" type="submit" ng-click="pesquisarVisitantes()">Pesquisar</button>
+    </div>
+<span ng-bind="cpf"></span>
+    <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>NOME</th>
+                <th>CPF DO VISITANTE</th>
+                <th>CPF DO RESIDENTE</th>
+                <th>RECORRENTE</th>
+            </tr>
+
+            <tr ng-repeat="visitante in visitantes | filter:filtro" style="cursor:default">
+                <td>{{visitante.nome}}</td>
+                <td>{{ visitante.cpf_visitor }}</td>
+                <td>{{ visitante.cpf_resident }}</td>
+                <td><span ng-if="visitante.iterative">SIM</span><span ng-if="!visitante.iterative">NÃO</span></td>
+            </tr>
+        </table>
+    </div>
+
+</div>

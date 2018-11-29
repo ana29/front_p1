@@ -1,12 +1,13 @@
 angular.module('condoManager')
 
 .controller('AddLocalController', function($scope, AddLocalService, $localStorage, 
-    ListarLocaisService, AddReservaService, DelReservaService,
+    ListarLocaisService, AddReservaService, DelReservaService, DelLocalService,
     GetResidentService) {
 
     $scope.local = new AddLocalService();
     $scope.locais = [];
     $scope.localSelecionado = null;
+
     $scope.reservaSelecionada = null;
     $scope.reservas = null;
     $scope.resident = null;
@@ -18,11 +19,31 @@ angular.module('condoManager')
 
     $scope.local.cnpj = $localStorage.usuarioLogado.cnpj;
 
+    $scope.horariosLocal = [];
+
+    $scope.addHorario = () => {
+        if ($scope.horario.startTime != null && $scope.horario.endTime != null) {
+
+            $scope.horariosLocal.push({
+                "dia": $scope.horario.dia,
+                "startTime": $scope.horario.startTime,
+                "endTime": $scope.horario.endTime
+            });
+        } else {
+            alert("Preencha todos os campos");
+        }
+    }
+
+    $scope.ts = (content) => {
+        return JSON.parse(content);
+    }
+
     $scope.cadastrarLocal = () => {
-        
+        $scope.local.about = $scope.horariosLocal;
         $scope.local.$save()
 
         .then(() => {
+            
             if ($scope.frm.$valid) {
                 
                 $scope.mensagem = { texto: "Salvo com sucesso" };
@@ -33,6 +54,10 @@ angular.module('condoManager')
             $('#adicionarLocal').modal('hide');
             $scope.local.place_name = '';
             $scope.local.about = '';
+            $scope.horario.dia = '';
+            $scope.horario.startTime = '';
+            $scope.horario.endTime = '';
+            $scope.horariosLocal = '';
             
         })
 
@@ -121,9 +146,26 @@ angular.module('condoManager')
             });
     };
 
+    $scope.selecionaLocal2 = (local) => {
+        $scope.localSelecionado = local;
+    }
+
+    $scope.removeLocal = (localID) => {
+        $('#removeLocal').modal('hide');
+        DelLocalService.delete({ id: localID }, () => {
+            buscaLocais();
+        },
+            (erro) => {
+                console.log("Não foi possível remover o local");
+                console.log(erro);
+            }
+        );
+    }
+
     $scope.selecionaReserva = (reserva) => {
         $scope.reservaSelecionada = reserva;
     }
+
     $scope.removeReserva = (reservationId) => {
         $('#removeReserva').modal('hide');
         DelReservaService.delete({ id: reservationId },() => {

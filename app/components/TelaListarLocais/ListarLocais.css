@@ -1,0 +1,11 @@
+.uib-day {
+    padding: 2px;
+}
+
+.uib-daypicker > table > thead > tr > th {
+    padding: 2px;
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+    cursor: not-allowed
+}
