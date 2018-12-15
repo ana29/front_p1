@@ -1,1 +1,18 @@
-<h1>Listar Visitantes</h1>
+<div class="container">
+
+
+    <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <tr>
+                <th>NOME</th>
+            </tr>
+
+            <tr ng-repeat="visitante in visitantes | filter:filtro" style="cursor:default">
+                <td>{{visitante.name}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
