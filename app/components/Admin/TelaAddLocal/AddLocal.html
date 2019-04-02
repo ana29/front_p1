@@ -206,8 +206,8 @@
                             </thead>
                             <tbody>
                                 <tr class="text-center" ng-repeat="horario in localSelecionado.about">
-                                    <td>{{ts(horario).dia}}</td>
-                                    <td>{{ts(horario).startTime | date:'HH:mm'}} às {{ts(horario).endTime
+                                    <td>{{horario.dia}}</td>
+                                    <td>{{horario.startTime | date:'HH:mm'}} às {{horario.endTime
                                         | date: 'HH:mm'}}</td>
                                 </tr>
 

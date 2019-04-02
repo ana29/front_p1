@@ -134,7 +134,7 @@ angular.module('condoManager')
 
     $scope.selecionaLocal = (local) => {
         $scope.localSelecionado = local;
-
+        console.log(local)
         AddReservaService.query({placeId: $scope.localSelecionado.id}, 
             
             buscaReservas($scope.localSelecionado.id),
