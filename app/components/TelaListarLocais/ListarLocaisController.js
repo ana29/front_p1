@@ -33,7 +33,9 @@ angular.module('condoManager')
 
     buscaLocais();
 
+
     $scope.selecionaLocal = async (local) => {
+        console.log(local);
         $scope.localSelecionado = local;
         if(buscaReservas($scope.localSelecionado.id)) {
             $scope.reservasDoUsuario = await $scope.reservas.filter(filtroID, $localStorage.usuarioLogado.id);

@@ -44,9 +44,9 @@
             <div class="modal-body">
                 <div style="display: flex; flex-wrap: wrap">
                     <span ng-repeat="horario in localSelecionado.about">
-                        <button ng-click="selecionarHorario(ts(horario))" data-toggle="modal" data-target="#adicionarReserva"
+                        <button ng-click="selecionarHorario(horario)" data-toggle="modal" data-target="#adicionarReserva"
                             class="btn btn-sm btn-info" style="margin:5px" ng-click="console.log(horario)">
-                            {{ts(horario).dia}} - {{ts(horario).startTime | date:'HH:mm'}} às {{ts(horario).endTime
+                            {{horario.dia}} - {{horario.startTime | date:'HH:mm'}} às {{horario.endTime
                             | date: 'HH:mm'}}
                         </button>
                     </span>

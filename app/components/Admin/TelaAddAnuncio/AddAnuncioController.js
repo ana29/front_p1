@@ -4,10 +4,9 @@ angular.module('condoManager')
 
     $scope.anuncio = new AddAnuncioService();
 
-    $scope.anuncio.cnpj = $localStorage.usuarioLogado.cnpj;
-
     $scope.cadastrarAnuncio = () => {
         
+        $scope.anuncio.cnpj = $localStorage.usuarioLogado.cnpj;
         $scope.anuncio.$save()
 
         .then(() => {
@@ -15,7 +14,7 @@ angular.module('condoManager')
                 $scope.mensagem = { texto: "Salvo com sucesso" };
                 console.log("Anúncio adicionado com sucesso!");
             }
-
+            $scope.anuncio = new AddAnuncioService();
             $scope.anuncio.announcement = '';
 
         })
