@@ -134,15 +134,15 @@ angular.module('condoManager')
 
     $scope.selecionaLocal = (local) => {
         $scope.localSelecionado = local;
-        console.log(local)
+        //console.log(local)
         AddReservaService.query({placeId: $scope.localSelecionado.id}, 
             
             buscaReservas($scope.localSelecionado.id),
 
             //Callback de erro
             (erro) => {
-                console.log("Não foi possível obter a lista de reservas");
-                console.error(erro);
+                //console.log("Não foi possível obter a lista de reservas");
+                //console.error(erro);
             });
     };
 
