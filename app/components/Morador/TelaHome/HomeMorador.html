@@ -2,3 +2,42 @@
 <br>
 <h1 class="text-center">Bem vindo, {{$root.usuarioLogado.name}} </h1>
 <br>
+<p class="text-center">  Últimos anúncios</p>
+<hr class="container" />
+<div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
+    <div align="center" ng-repeat="anuncio in filtro =(anuncios | filter: filtroNome | orderBy:anuncio.createdAt) | limitTo:3"
+        class="card" style="width: 15rem; margin: 3px">
+        <div class="card-body">
+            <h5 class="card-title">Anúncio</h5>
+            <hr>
+            <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{anuncio.announcement}}</p>
+            <br>
+            <button ng-click="selecionaAnuncio(anuncio)" data-toggle="modal" data-target="#detalheAnuncio"
+                class="btn btn-primary">Ver mais</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes do Serviço -->
+<div class="modal fade" id="detalheAnuncio" tabindex="-1" role="dialog" aria-labelledby="detalhesAnuncioTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">Anúncio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><b>Data: </b> {{selecionado.createdAt | date:'dd/MM/yyyy - hh:mm'}}</p>
+                <p><b>Descrição:</b>
+                <p>{{selecionado.announcement}}</p>
+                <p ng-if="selecionado.announcement==null"><i>Sem descrição</i></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

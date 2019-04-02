@@ -1,6 +1,26 @@
 
-<br>
+<!--<h1 class="text-center">Bem vindo, {{$root.usuarioLogado.name}} </h1>-->
 
-<h1 class="text-center">Bem vindo, {{$root.usuarioLogado.name}} </h1>
+<div class="col-sm">
+        <div class="card">
+            <div class="card-header text-center title-2">Adicionar anúncio</div>
+            <div class="card-body">
+
+                <form ng-submit="cadastrarAnuncio()" name="frm">
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <textarea name="textarea-input" id="textarea-input" ng-model="anuncio.announcement"
+                                      rows="5" placeholder="Conteúdo do anúncio" class="form-control" maxlength="255" required></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-info btn-block">
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span>Adicionar</span>
+                    </button>
+            </div>
+            </form>
+        </div>
+    </div>
 
 <br>

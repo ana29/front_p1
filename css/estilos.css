@@ -308,13 +308,13 @@ section {
 }
 
 .main-content {
-    padding-top: 120px;
+    padding-top: 95px;
     min-height: 100vh;
 }
 
 @media (max-width: 991px) {
     .main-content {
-        padding-top: 50px;
+        padding-top: 25px;
     }
 }
 
