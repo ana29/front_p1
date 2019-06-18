@@ -13,7 +13,7 @@ var app = angular.module('condoManager',
 
 app.constant('env', {
     BASE_API_LOCAL: 'http://localhost:3000',
-    BASE_API_REMOTE: 'https://projetop1.herokuapp.com'
+    BASE_API_REMOTE: 'https://p2back.herokuapp.com'
     //BASE_API_REMOTE: 'http://localhost:3000'
 });
 
