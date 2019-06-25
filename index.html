@@ -67,7 +67,7 @@
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
@@ -84,7 +84,7 @@
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
                         </li>
 
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_servico">
                                 <i class="fa fa-wrench"></i>Cadastrar serviço</a>
                         </li>
@@ -93,7 +93,7 @@
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Ver Funcionários</a>
                         </li>
@@ -152,7 +152,7 @@
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
@@ -168,7 +168,7 @@
                             <a href="#!/adicionar_anuncio">
                                 <i class="fas fa-bullhorn"></i>Adicionar Anúncio</a>
 
-                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_servico">
                                 <i class="fa fa-wrench"></i>Cadastrar serviço</a>
                         </li>
@@ -176,7 +176,7 @@
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
+                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Ver Funcionários</a>
                         </li>
@@ -369,7 +369,6 @@
     <script src="./vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <script src="./vendor/slick/slick.min.js"></script>
     <script src="./vendor/wow/wow.min.js"></script>
-    <script src="./vendor/animsition/animsition.min.js"></script>
     <script src="./vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <script src="./vendor/counter-up/jquery.waypoints.min.js"></script>
     <script src="./vendor/counter-up/jquery.counterup.min.js"></script>
@@ -414,6 +413,11 @@
     <script src="./app/components/Admin/TelaAddLocal/GetResidentService.js"></script>
     <script src="./app/components/Morador/TelaReservarLocal/GetReservasService.js"></script>
     <script src="./app/components/Admin/TelaAddLocal/DelLocalService.js"></script>
+    <script src="./app/components/Admin/TelaListarMoradores/DelUsuarioService.js"></script>
+    <script src="./app/components/Admin/TelaHome/GetReservasService.js"></script>
+    <script src="./app/components/TelaListarAnuncios/DelAnunciosService.js"></script>
+    <script src="./app/components/TelaListarVisitantes/DelVisitanteService.js"></script>
+    <script src="./app/components/TelaListarVisitantes/GetUserService.js"></script>
 
     <!-- Controllers -->
     <script src="./app/components/TelaLogin/PageController.js"></script>

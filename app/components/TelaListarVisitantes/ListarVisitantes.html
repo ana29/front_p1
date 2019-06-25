@@ -1,31 +1,62 @@
 <div class="container">
 
-    <div ng-if="$root.usuarioLogado.role=='ADMIN'" class="form-group" ng-class="{ 'has-error' : frm.cpf.$invalid && !frm.cpf.$pristine }">
+    <div ng-if="$root.usuarioLogado.role=='ADMIN'" class="form-group"
+        ng-class="{ 'has-error' : frm.cpf.$invalid && !frm.cpf.$pristine }">
         <label>Digite o CPF do morador</label>
-        <input name="cpf" class="form-control" type="text" placeholder="XXX.XXX.XXX-XX" ng-model="cpf"
-            mask="999.999.999-99" required>
-        <p class="help-block" ng-show="frm.cpf.$invalid && !frm.cpf.$pristine"></p>
-        <button class="btn btn-primary" type="submit" ng-click="pesquisarVisitantes()">Pesquisar</button>
+        <div class="row" style="padding-right: 16px;">
+            <div class="col-md-10">
+                <input name="cpf" class="form-control" type="text" placeholder="XXX.XXX.XXX-XX" ng-model="cpf"
+                    mask="999.999.999-99" required>
+                <p class="help-block" ng-show="frm.cpf.$invalid && !frm.cpf.$pristine"></p>
+
+            </div>
+            <button class="col-md btn btn-primary" type="submit" ng-click="pesquisarVisitantes(cpf)">Pesquisar</button>
+        </div>
+
     </div>
-<span ng-bind="cpf"></span>
-    <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
+    <div ng-if="visitantes.length > 0">
+        <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <tr>
-                <th>NOME</th>
-                <th>CPF DO VISITANTE</th>
-                <th>CPF DO RESIDENTE</th>
-                <th>RECORRENTE</th>
-            </tr>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tr>
+                    <th>NOME</th>
+                    <th>CPF DO VISITANTE</th>
+                    <th>CPF DO RESIDENTE</th>
+                    <th>RECORRENTE</th>
+                </tr>
 
-            <tr ng-repeat="visitante in visitantes | filter:filtro" style="cursor:default">
-                <td>{{visitante.nome}}</td>
-                <td>{{ visitante.cpf_visitor }}</td>
-                <td>{{ visitante.cpf_resident }}</td>
-                <td><span ng-if="visitante.iterative">SIM</span><span ng-if="!visitante.iterative">NÃO</span></td>
-            </tr>
-        </table>
+                <tr ng-repeat="visitante in visitantes | filter:filtro" style="cursor:default">
+                    <td>{{visitante.nome}}</td>
+                    <td>{{ visitante.cpf_visitor }}</td>
+                    <td>{{ visitante.cpf_resident }}</td>
+                    <td><span ng-if="visitante.iterative">SIM</span><span ng-if="!visitante.iterative">NÃO</span></td>
+                    <td><button data-toggle="modal" data-target="#removeVisitante" ng-click="selecionaVisitante(visitante)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                </tr>
+            </table>
+        </div>
     </div>
+</div>
 
+<!-- Modal com Detalhes da remoção de visitante -->
+<div class="modal fade" id="removeVisitante" tabindex="-1" role="dialog" aria-labelledby="detalhesVisitantelTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ffdee1">
+            <div class="modal-header list-group-item-default modal-header-danger" style="background-color:#bd2130">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white">Remover local</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Deseja remover o visitante?</h3>
+                <p>{{selecionado.nome}}</p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeVisitante(selecionado.id)" type="button" class="btn btn-danger">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
 </div>

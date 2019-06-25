@@ -1,28 +1,97 @@
 <div class="container">
+        <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
 
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2 table-hover">
+                <thead>
+                    <tr> 
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>CPF</th>
+                    </tr>
+                </thead>
+                <tbody ng-repeat="morador in moradores | filter: filtro">
+                    <tr class="tr-shadow" style="cursor:pointer" data-toggle="modal"
+                    data-target="#detalheMorador" ng-click="selecionaMorador(morador)">
+                        <td>{{ morador.name }}</td>
+                        <td>
+                            <span class="block-email">{{ morador.email }}</span>
+                        </td>
+                        <td>{{ morador.cpf }}</td>
+                    </tr>
+                    <tr class="spacer"></tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+   
 
-    <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
-
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <tr>
-                <th>NOME</th>
-                <th>CPF</th>
-                <th>EMAIL</th>
-                <th></th>
-            </tr>
-
-            <tr ng-repeat="morador in moradores | filter:filtro" style="cursor:default">
-                <td>{{morador.name}}</td>
-                <td>{{ morador.cpf }}</td>
-                <td>{{ morador.email }}</td>
-                <td>
-                    <button ng-click="selecionaMorador(morador)">
-
-                    </button>
-                </td>
-            </tr>
-        </table>
+<!-- Modal com Detalhes do Serviço -->
+<div class="modal fade" id="detalheMorador" tabindex="-1" role="dialog" aria-labelledby="detalhesMoradorTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header list-group-item-default">
+                <h5 class="modal-title" id="exampleModalLongTitle">Detalhes do morador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-stripedtable-responsive">
+                    <tbody>
+                        <tr>
+                            <td scope="row"><b>Nome</b></td>
+                            <td>{{selecionado.name}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><b>Endereço</b></td>
+                            <td>{{selecionado.address}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><b>Email</b></td>
+                            <td>{{selecionado.email}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><b>Telefone</b></td>
+                            <td>{{selecionado.phone}}</td>
+                        </tr>
+                        <tr>
+                            <td scope="row"><b>CPF</b></td>
+                            <td>{{selecionado.cpf}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-toggle="modal" data-target="#removeMorador">Remover morador</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
     </div>
+</div>
 
+<!-- Modal com Detalhes da remoção de morador -->
+<div class="modal fade" id="removeMorador" tabindex="-1" role="dialog" aria-labelledby="detalhesMoradorTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ffdee1">
+            <div class="modal-header list-group-item-default modal-header-danger" style="background-color:#bd2130">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white">Remover morador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Deseja remover o morador?</h3>
+                <p>
+                    {{selecionado.name}}<br>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeMorador(selecionado.id)" type="button" class="btn btn-danger">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
 </div>

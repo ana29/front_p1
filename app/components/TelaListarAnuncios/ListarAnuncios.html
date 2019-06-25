@@ -19,12 +19,14 @@
     <br>
 
     <div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
-        <div align="center" ng-repeat="anuncio in filtro =(anuncios | filter: filtroNome)"
-            class="card" style="width: 15rem; margin: 3px">
+        <div align="center" ng-repeat="anuncio in filtro =(anuncios | filter: filtroNome)" class="card"
+            style="width: 15rem; margin: 3px">
             <div class="card-body">
                 <h5 class="card-title">Anúncio</h5>
                 <hr>
-                <p class="card-text" style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{anuncio.announcement}}</p>
+                <p class="card-text"
+                    style="max-width: 60ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                    {{anuncio.announcement}}</p>
                 <br>
                 <button ng-click="selecionaAnuncio(anuncio)" data-toggle="modal" data-target="#detalheAnuncio"
                     class="btn btn-primary">Ver mais</button>
@@ -48,11 +50,36 @@
             <div class="modal-body">
                 <p><b>Data: </b> {{selecionado.createdAt | date:'dd/MM/yyyy - hh:mm'}}</p>
                 <p><b>Descrição:</b>
-                <p>{{selecionado.announcement}}</p>
-                <p ng-if="selecionado.announcement==null"><i>Sem descrição</i></p>
+                    <p>{{selecionado.announcement}}</p>
+                    <p ng-if="selecionado.announcement==null"><i>Sem descrição</i></p>
             </div>
             <div class="modal-footer">
+                <button ng-if="$root.usuarioLogado.role=='ADMIN'" data-toggle="modal" data-target="#removeAnuncio"
+                    class="btn btn-danger">Remover anúncio</button>
+
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal com Detalhes da remoção de reserva -->
+<div class="modal fade" id="removeAnuncio" tabindex="-1" role="dialog" aria-labelledby="detalhesAnunciolTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content" style="background-color:#ffdee1">
+            <div class="modal-header list-group-item-default modal-header-danger" style="background-color:#bd2130">
+                <h5 class="modal-title" id="exampleModalLongTitle" style="color:white">Remover local</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Deseja remover o anúncio?</h3>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="removeAnuncio(selecionado.id)" type="button" class="btn btn-danger">Sim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
             </div>
         </div>
     </div>

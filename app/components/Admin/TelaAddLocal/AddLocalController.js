@@ -34,6 +34,10 @@ angular.module('condoManager')
         }
     }
 
+    $scope.removeHorario = (index) => {
+        $scope.horariosLocal.splice(index, 1);
+    }
+
     $scope.ts = (content) => {
         return JSON.parse(content);
     }
@@ -57,7 +61,7 @@ angular.module('condoManager')
             $scope.horario.dia = '';
             $scope.horario.startTime = '';
             $scope.horario.endTime = '';
-            $scope.horariosLocal = '';
+            $scope.horariosLocal = [];
             
         })
 
@@ -110,7 +114,9 @@ angular.module('condoManager')
         ListarLocaisService.query({cnpj: $localStorage.usuarioLogado.cnpj}, (locais) => {
             $scope.locais = locais;
             $scope.mensagem = {};
-            console.log("Locais carregados com sucesso")
+            console.log("Locais carregados com sucesso");
+
+
         },
 
             //Callback de erro
@@ -129,6 +135,12 @@ angular.module('condoManager')
     let buscaReservas = (placeId) => {
         AddReservaService.query({placeId: placeId}, (reservas) => {
             $scope.reservas = reservas;
+
+            $scope.reservas.map(r => {
+                GetResidentService.get({id: r.residentId}, (resident) => {
+                    r.residentName = resident.name;
+                });
+            });
         });
     }
 
@@ -184,12 +196,11 @@ angular.module('condoManager')
      * BUG
      */
 
-    $scope.getResidentById = (residentId) => {
+    getResidentById = (residentId) => {
         
         if (residentId) {
             GetResidentService.get({id: residentId}, (resident) => {
-                $scope.resident = resident;
-                console.log($scope.resident);
+                return resident;
             },
             
             (erro) => {

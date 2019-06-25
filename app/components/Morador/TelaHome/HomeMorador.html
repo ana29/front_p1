@@ -3,7 +3,6 @@
 <h1 class="text-center">Bem vindo, {{$root.usuarioLogado.name}} </h1>
 <br>
 <p class="text-center">  Últimos anúncios</p>
-<hr class="container" />
 <div class="justify-content-center" style="display: flex; flex-flow: row wrap;">
     <div align="center" ng-repeat="anuncio in filtro =(anuncios | filter: filtroNome | orderBy:'-createdAt') | limitTo:3"
         class="card" style="width: 15rem; margin: 3px">
@@ -20,7 +19,7 @@
     
 </div>
 <div class="text-center" style="margin-top: 10px;">
-    <button class="btn btn-light">Ver todos os anúncios</button>
+    <a href="#!/visualizar_anuncios" class="btn btn-light">Ver todos os anúncios</a>
 </div>
 
 <!-- Modal com Detalhes do Serviço -->

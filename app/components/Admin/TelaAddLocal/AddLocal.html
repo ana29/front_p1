@@ -6,7 +6,7 @@
 </div>
 <br><br>
 <div class="row container justify-content-center">
-    <div class="col-lg-6">
+    <div>
         <input type="search" class="form-control" ng-model="filtro" placeholder="Pesquisar">
 
         <div class="table-responsive">
@@ -35,7 +35,7 @@
 <!-- Modal Adicionar Local -->
 <div class="modal fade" id="adicionarLocal" tabindex="-1" role="dialog" aria-labelledby="detalhesLocalTitle"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-addLocal" role="document">
         <div class="modal-content">
             <div class="modal-header list-group-item-default">
                 <h5 class="modal-title" id="exampleModalLongTitle">Adicionar local para reserva</h5>
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <select class="form-control" name="multipleSelect" id="multipleSelect" ng-model="horario.dia">
                                         <option value="Domingo">Domingo</option>
                                         <option value="Segunda-feira">Segunda-feira</option>
@@ -70,7 +70,7 @@
                                         <option value="Sábado">Sábado</option>
                                     </select><br>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-6">
                                     <small for="domStart">Início: </small>
                                     <input id="domStart" type="time" ng-model="horario.startTime" placeholder="HH:mm"
                                         min="07:00" max="22:00" required />
@@ -86,12 +86,16 @@
                             </div>
 
                             <div class="container">
-                                <ul>
-                                    <li ng-repeat="horario in horariosLocal">
-                                        {{horario.dia}} - {{horario.startTime | date:'HH:mm'}} às {{horario.endTime |
-                                        date:'HH:mm'}}
-                                    </li>
-                                </ul>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr ng-repeat="horario in horariosLocal">
+                                                <td>{{$index}}</td>
+                                                <td>{{horario.dia}}</td>
+                                                <td>{{horario.startTime | date:'HH:mm'}} às {{horario.endTime | date:'HH:mm'}}</td>
+                                                <td><button  type="button" ng-click="removeHorario($index)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                             </div>
 
                         </div>
@@ -239,7 +243,7 @@
                                     </td>
                                     <td ng-if="reserva.occupied">Sim</td>
                                     <td ng-if="!reserva.occupied">Não</td>
-                                    <td>{{reserva.residentId}}</td>
+                                    <td>{{reserva.residentName}}</td>
                                     <td><button ng-click="selecionaReserva(reserva)" data-toggle="modal" data-target="#removeReserva"
                                             class="btn btn-lg btn-danger"><i class="fa fa-remove"></i></button></td>
                                 </tr>

@@ -1,6 +1,6 @@
 angular.module('condoManager')
 
-.controller('ListarAnunciosController', function($scope, ListarAnunciosService, $localStorage) {
+.controller('ListarAnunciosController', function($scope, ListarAnunciosService, $localStorage, DelAnunciosService) {
 
     $scope.anuncios = [];
     $scope.selecionado = null;
@@ -29,4 +29,17 @@ angular.module('condoManager')
     $scope.selecionaAnuncio = (anuncio) => {
         $scope.selecionado = anuncio;
     };
+
+    $scope.removeAnuncio = (anuncioID) => {
+        $('#removeAnuncio').modal('hide');
+        $('#detalheAnuncio').modal('hide');
+        DelAnunciosService.delete({ id: anuncioID }, () => {
+            buscaAnuncios();
+        },
+            (erro) => {
+                console.log("Não foi possível remover o anúncio");
+                console.log(erro);
+            }
+        );
+    }
 });

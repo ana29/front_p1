@@ -1,9 +1,13 @@
 angular.module('condoManager')
 
-.controller('HomeAdminController', function($scope, $rootScope, $localStorage, AddAnuncioService) {
+.controller('HomeAdminController', function($scope, $rootScope, $localStorage, AddAnuncioService, 
+    ListarMoradoresService, $location, GetReservasService, ListarVisitantesService) {
     $scope.nomeApp = 'Condo Manager';
     $rootScope.usuarioLogado = $localStorage.usuarioLogado;
     $scope.statusError = false;
+    $scope.moradores = [];
+    $scope.reservas = [];
+    $scope.visitantes = [];
 
     $rootScope.logout = () => {
         delete $rootScope.usuarioLogado;
@@ -33,4 +37,56 @@ angular.module('condoManager')
             console.log(erro);
         });
     }
+
+    let listarMoradores = () => {
+        
+        try {
+            ListarMoradoresService.query({cnpj: $localStorage.usuarioLogado.cnpj},(moradores) => {
+                $scope.moradores = moradores;
+                $scope.mensagem = {};
+
+                $scope.moradores.map(m => {
+                    ListarVisitantesService.query({cpf_resident: m.cpf}, (visitantes) => {
+                        visitantes.map(v => {
+                            $scope.visitantes.push(v);
+                        });
+                    },(erro) => {
+                        console.log("Não foi possível obter a lista de visitantes");
+                        console.log(erro);
+                    });
+                })
+            },
+        
+            (erro) => {
+                console.log("Não foi possível obter a lista de moradores");
+                console.log(erro);
+
+                $scope.mensagem = {
+                    texto: 'Não foi possível obter a lista de moradores'
+                };
+            });
+        } catch(error) {
+            console.log("Usuário não encontrado")
+        }
+    };
+
+    listarMoradores();
+
+    let listarReservas = () => {
+        GetReservasService.query({cnpj: $localStorage.usuarioLogado.cnpj}, (reservas) => {
+            $scope.reservas = reservas;
+        },
+        
+        () => {
+            console.log("Não foi possível obter a lista de reservas")
+        });
+    };
+
+    listarReservas();
+
+    $scope.verLink = (path) => {
+        $location.path(path);
+    }
+    
+
 });

@@ -1,26 +1,60 @@
-
 <!--<h1 class="text-center">Bem vindo, {{$root.usuarioLogado.name}} </h1>-->
 
 <div class="col-sm">
-        <div class="card">
-            <div class="card-header text-center title-2">Adicionar anúncio</div>
-            <div class="card-body">
-
-                <form ng-submit="cadastrarAnuncio()" name="frm">
-                    <div class="row form-group">
-                        <div class="col-md-12">
-                            <textarea name="textarea-input" id="textarea-input" ng-model="anuncio.announcement"
-                                      rows="5" placeholder="Conteúdo do anúncio" class="form-control" maxlength="255" required></textarea>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-lg btn-info btn-block">
-                        <i class="fa fa-plus fa-lg"></i>&nbsp;
-                        <span>Adicionar</span>
-                    </button>
+    <div class="row info-home">
+        <div class="col-md-6 col-lg-3">
+            <div class="statistic__item" style="cursor:pointer" ng-click="verLink('/moradores')" title="Ver moradores">
+                <h2 class="number">{{moradores.length}}</h2>
+                <span ng-if="moradores.length==1" class="desc">morador</span>
+                <span ng-if="moradores.length!=1" class="desc">moradores</span>
+                <div class="icon">
+                    <i class="fa fa-group"></i>
+                </div>
             </div>
-            </form>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="statistic__item" style="cursor:pointer" ng-click="verLink('adicionar_local')" title="Ver reservas">
+                <h2 class="number">{{reservas.length}}</h2>
+                <span ng-if="reservas.length==1" class="desc">reserva</span>
+                <span ng-if="reservas.length!=1" class="desc">reservas</span>
+                <div class="icon">
+                    <i class="zmdi zmdi-calendar-note"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="statistic__item" style="cursor:pointer" ng-click="verLink('visualizar_visitantes')" title="Ver visitantes">
+                <h2 class="number">{{visitantes.length}}</h2>
+                <span ng-if="visitantes.length==1" class="desc">visitante</span>
+                <span ng-if="visitantes.length!=1" class="desc">visitantes</span>
+                <div class="icon">
+                    <i class="zmdi zmdi-account-o"></i>
+                </div>
+            </div>
         </div>
     </div>
+</div>
+
+<div class="col-sm">
+    <div class="card">
+        <div class="card-header text-center title-2">Adicionar anúncio</div>
+        <div class="card-body">
+
+            <form ng-submit="cadastrarAnuncio()" name="frm">
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <textarea name="textarea-input" id="textarea-input" ng-model="anuncio.announcement" rows="5"
+                            placeholder="Conteúdo do anúncio" class="form-control" maxlength="255" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-lg btn-info btn-block">
+                    <i class="fa fa-plus fa-lg"></i>&nbsp;
+                    <span>Adicionar</span>
+                </button>
+        </div>
+        </form>
+    </div>
+</div>
 
 <br>
