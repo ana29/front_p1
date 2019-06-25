@@ -67,7 +67,7 @@
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
@@ -93,7 +93,7 @@
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Ver Funcionários</a>
                         </li>
@@ -152,7 +152,7 @@
                             <a href="#!/adicionar_morador">
                                 <i class="fas fa-user-plus"></i>Adicionar Morador</a>
                         </li>
-                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='ADMIN'">
+                        <li ng-if="$root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/adicionar_funcionario">
                                 <i class="fas fa-user-plus"></i>Adicionar Funcionário</a>
                         </li>
@@ -176,7 +176,7 @@
                             <a href="#!/adicionar_visitante">
                                 <i class="fas fa-user-plus"></i>Adicionar Visitante</a>
                         </li>
-                        <li ng-hide="true" ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
+                        <li ng-if="$root.usuarioLogado.role=='RESIDENT' || $root.usuarioLogado.role=='ADMIN'">
                             <a href="#!/visualizar_funcionarios">
                                 <i class="fas fa-users"></i>Ver Funcionários</a>
                         </li>
