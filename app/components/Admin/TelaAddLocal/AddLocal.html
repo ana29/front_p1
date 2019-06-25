@@ -89,7 +89,6 @@
                                     <table class="table">
                                         <tbody>
                                             <tr ng-repeat="horario in horariosLocal">
-                                                <td>{{$index}}</td>
                                                 <td>{{horario.dia}}</td>
                                                 <td>{{horario.startTime | date:'HH:mm'}} às {{horario.endTime | date:'HH:mm'}}</td>
                                                 <td><button  type="button" ng-click="removeHorario($index)" class="btn btn-danger"><i class="fa fa-trash"></i></button></td>
